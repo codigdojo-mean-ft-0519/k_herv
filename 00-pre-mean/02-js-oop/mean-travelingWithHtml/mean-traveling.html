@@ -1,0 +1,80 @@
+<!-- In the last assignment, we created a map of the Hundred Acre Wood! Now let's use it to start building a simple game. First, our player will need a way to travel around the map. We'll get you started by creating a player object. The player object will have the attribute "location", which will be a pointer to Tigger's home. Assuming that we are using the code in the previous module, the variable tigger points to the location in memory where we stored Tigger's home object. If you did not use the variable tigger, your code may look different
+
+var player = {
+    location: tigger
+}
+Create a function that will move the player to the north, south, east, or west, depending on the direction provided to it. Call this function move. Have the move function console.log the player's current location so that you can verify that the code is working as expected. If a direction is passed to the move function that does not lead anywhere, have it console.log "You may not go that way!" Complete this assignment in <script> tags in an html document so that you may open it in your browser and call your function from the browser's console. The screenshot below shows the kind of output you should be able to produce. -->
+
+
+
+<!DOCTYPE html>
+
+    <head>
+        <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!--stops fav icon error-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="mean-jsdrawHundredAcreWood.js"></script>
+
+
+        <title>Traveling Pooh Characters</title>
+        <meta name="description" content="">
+
+
+
+
+    </head>
+    <body>
+        <div id="demo">
+
+    </div>
+
+        <script language="javascript">
+            var player = {
+                location: tigger, 
+                move(direction) {
+                    var locationMessage
+                    alert("I am in the move function");
+                    if (typeof player.location[direction] !== 'undefined'){
+                        this.location=player.location[direction];
+                        locationMessage = "going "+ direction +" You are now at the house of " + player.location.character;
+                    }
+                    else {
+                        //console.log("tester")
+                        locationMessage="You may not go that way!";
+                    }
+                    console.log(locationMessage)
+                    return "wowee"
+                }
+            }
+            player.move("north");
+            player.move("north");
+            player.move("east");
+            player.move("east");
+            player.move("east");
+            player.move("west");
+            player.move("west");
+            player.move("north");
+            player.move("north");
+            player.move("north");
+            player.move("south");
+            
+
+            document.getElementById("demo").innerHTML = ("bugger");
+
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,23 @@
+All of my js files in this folder should run and produce something..even those inside of the folders
+
+I did the html files that way because the platform seemed to require it.
+
+I am particularly concerned about how I did the player movement in this file:  mean-travelinginteracting.html.  Platform said to console.log, but the below seemed easier for me to demonstrate.  Also, mine start with "player.", but the platform did not use that:
+            player.move("north"); //should be pooh
+            player.move("south"); //should be tigger
+            player.move("south"); //should be tigger
+            player.move("north"); //should be pooh
+            player.move("north"); //should be chris
+            player.move("east");
+            player.move("east");
+            player.move("east");
+            player.move("west");
+            player.move("west");
+            player.move("north");
+            player.move("north");
+            player.move("north");
+            player.move("south");
+
+Note that the mean-traveling.html also uses the same technique
+
+I am wondering whether to do gamify, or keep going.
