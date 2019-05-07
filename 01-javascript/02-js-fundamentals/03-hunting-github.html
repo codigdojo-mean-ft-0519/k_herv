@@ -16,14 +16,17 @@
                     console.log("name is:  " + res.name);
                     //console.log("species is:  ");
                     //console.log(res.species['url']);
-                    document.getElementById("p1").innerHTML = "the top function says:  " + res.name;
+                    //document.getElementById("p1").innerHTML = "the top function says:  " + res.name;
                     //document.getElementById("tagbelowbutton").innerHTML = res.name;                    
                     //document.write(res.name);
                 }, "json");
 
                 $('#button').click(function(){
                     console.log("you clicked me");
+                    var other= ($('#username'))[0].value;
+                    console.log("other is: " + other);
                     var myLogin ="blaurent123";
+                    myLogin = other
                     $.get("https://api.github.com/users/"+myLogin, displayName) 
                     console.log("here?");
                     // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
@@ -31,8 +34,6 @@
                         // var dispForm= $(this).attr("#username");
                         // var dispForm = $('#username');
                         // var disp2=dispForm[0].value
-                        var other= ($('#username'))[0].value;
-                        console.log("other is: " + other);
                         // console.log("should be just login: " + disp2);
                         // console.log("displayn:  ");
                         // console.log(dispForm[0].value);
@@ -40,7 +41,9 @@
                         console.log(data);
                         console.log(data.followers);
                         console.log("name now is:  " + data.name);
-                        document.getElementById("tagbelowbutton").innerHTML=data.name;
+                        var outputString = "<p>Full Name of user is:  " + data.name + "</p>"
+                        outputString += "<p> And the URL is:  " + data.url + "</p>"
+                        document.getElementById("tagbelowbutton").innerHTML=outputString;
                     }
                 })
 
@@ -56,9 +59,9 @@
 
 
             <fieldset>
-                <legend>data</legend>
-                <input type="text"  id="username" name="username" placeholder="put display name here">
-                <button id="button">Click to retreive GitHub name</button>
+                <legend>GitHub retrieveal</legend>
+                <input type="text"  id="username" name="username" placeholder="put login name here">
+                <button id="button">Click to retreive GitHub Name</button>
                 <div id="tagbelowbutton">starting content</div>
             </fieldset>
         </div>
