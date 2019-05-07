@@ -16,18 +16,31 @@
                     console.log("name is:  " + res.name);
                     //console.log("species is:  ");
                     //console.log(res.species['url']);
-                    document.getElementById("p1").innerHTML = res.name;
+                    document.getElementById("p1").innerHTML = "the top function says:  " + res.name;
                     //document.getElementById("tagbelowbutton").innerHTML = res.name;                    
                     //document.write(res.name);
                 }, "json");
 
                 $('#button').click(function(){
                     console.log("you clicked me");
-                    $.get("https://api.github.com/khervey", displayName)
+                    var myLogin ="blaurent123";
+                    $.get("https://api.github.com/users/"+myLogin, displayName) 
                     console.log("here?");
                     // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
                     function displayName(data) {
+                        // var dispForm= $(this).attr("#username");
+                        // var dispForm = $('#username');
+                        // var disp2=dispForm[0].value
+                        var other= ($('#username'))[0].value;
+                        console.log("other is: " + other);
+                        // console.log("should be just login: " + disp2);
+                        // console.log("displayn:  ");
+                        // console.log(dispForm[0].value);
+                        // console.log(dispForm);
                         console.log(data);
+                        console.log(data.followers);
+                        console.log("name now is:  " + data.name);
+                        document.getElementById("tagbelowbutton").innerHTML=data.name;
                     }
                 })
 
@@ -44,7 +57,7 @@
 
             <fieldset>
                 <legend>data</legend>
-
+                <input type="text"  id="username" name="username" placeholder="put display name here">
                 <button id="button">Click to retreive GitHub name</button>
                 <div id="tagbelowbutton">starting content</div>
             </fieldset>
