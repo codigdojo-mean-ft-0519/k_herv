@@ -21,7 +21,15 @@
                     //document.write(res.name);
                 }, "json");
 
-
+                $('#button').click(function(){
+                    console.log("you clicked me");
+                    $.get("https://api.github.com/khervey", displayName)
+                    console.log("here?");
+                    // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+                    function displayName(data) {
+                        console.log(data);
+                    }
+                })
 
 
             })
