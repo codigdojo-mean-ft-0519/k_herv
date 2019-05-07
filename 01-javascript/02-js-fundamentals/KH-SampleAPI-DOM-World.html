@@ -22,8 +22,30 @@
 
 
             <script>
+
+16
+
+            function toSentence(arr) { //outputs an array
+            return arr.slice(0, -2).join(', ') + 
+                (arr.slice(0, -2).length ? ', ' : '') + 
+                arr.slice(-2).join(', and ');
+            }
             $(document).ready(function(){
                 $.get("https://restcountries.eu/rest/v2/", function(res) {
+
+                    //array of country names and their url
+                    var arrayCountry = []
+                    var outputStringAll =``
+                    for (let i=0; i<22; i++){
+                        countryDict=`{num: ${i}, name: ${res[i].name}, url: https://restcountries.eu/rest/v2/alpha/${res[i].alpha3Code}}`
+                        arrayCountry.push(countryDict)
+                        outputStringAll += `<p>num: ${i}, name: ${res[i].name}, url: <a href="https://restcountries.eu/rest/v2/alpha/${res[i].alpha3Code}">https://restcountries.eu/rest/v2/alpha/${res[i].alpha3Code}</a></p>` 
+                    }
+                    console.log(arrayCountry);
+                    console.log(outputStringAll);
+                    document.getElementById("p2").innerHTML = outputStringAll;
+
+
                     console.log(res);
                     var countryNumber = 0;
                     console.log("country number:  " + countryNumber + " is: ");
@@ -31,10 +53,15 @@
                     console.log("The name is:  " + res[countryNumber].name);
                     console.log("This country borders:  " + res[countryNumber].borders);
                     console.log("the countries languages is/are:  ");
+                    var theLanguages=[];
                     for (let i=0; i<res[countryNumber].languages.length; i++){
-                        console.log(res[countryNumber].languages[i].name)
+                        theLanguages.push(res[countryNumber].languages[i].name);
                     }
-                    let outputToDOM = `<p>The country name is:  ${res[countryNumber].name}</p>`;
+                    console.log(theLanguages);
+                    let outputToDOM = `<p>The country name is:  ${res[countryNumber].name}</p>
+                        <p>The country borders:  ${res[countryNumber].borders}</p>
+                        <p>Languages of this country:  ${toSentence(theLanguages)}.</p>
+                    `;
                     
                     
                     document.getElementById("p1").innerHTML = outputToDOM;
@@ -82,7 +109,10 @@
 
 
         </div>
+        <div id="p2">asdfff
 
+
+            </div>
 
 
 
