@@ -1,1 +1,50 @@
-// 1 hour
+<!--// 1 hour
+
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gotta Catch'em All</title>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+
+            <script>
+            $(document).ready(function(){
+                $.get("https://api.github.com/users/khervey", function(res) {
+                    console.log(res);
+                    console.log("name is:  " + res.name);
+                    //console.log("species is:  ");
+                    //console.log(res.species['url']);
+                    document.getElementById("p1").innerHTML = res.name;
+                    //document.getElementById("tagbelowbutton").innerHTML = res.name;                    
+                    //document.write(res.name);
+                }, "json");
+
+
+
+
+            })
+        </script>
+
+    </head>
+    <body>
+        <div id="p1">asdfff
+        </div>
+        <div id="theOtherDiv">
+
+
+            <fieldset>
+                <legend>data</legend>
+
+                <button id="button">Click to retreive GitHub name</button>
+                <div id="tagbelowbutton">starting content</div>
+            </fieldset>
+        </div>
+
+
+
+    </body>
+</html>
+
+
