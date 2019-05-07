@@ -5,22 +5,12 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Gotta Catch'em All</title>
+        <title>Search and return GitHub name given login</title>
         <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 
             <script>
             $(document).ready(function(){
-                $.get("https://api.github.com/users/khervey", function(res) {
-                    console.log(res);
-                    console.log("name is:  " + res.name);
-                    //console.log("species is:  ");
-                    //console.log(res.species['url']);
-                    //document.getElementById("p1").innerHTML = "the top function says:  " + res.name;
-                    //document.getElementById("tagbelowbutton").innerHTML = res.name;                    
-                    //document.write(res.name);
-                }, "json");
-
                 $('#button').click(function(){
                     console.log("you clicked me");
                     var other= ($('#username'))[0].value;
@@ -46,14 +36,12 @@
                         document.getElementById("tagbelowbutton").innerHTML=outputString;
                     }
                 })
-
-
             })
         </script>
 
     </head>
     <body>
-        <div id="p1">asdfff
+        <div id="p1">empty
         </div>
         <div id="theOtherDiv">
 
