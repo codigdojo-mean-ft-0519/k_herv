@@ -31,40 +31,48 @@
                 arr.slice(-2).join(', and ');
             }
             $(document).ready(function(){
+
                 $.get("https://restcountries.eu/rest/v2/", function(res) {
 
                     //array of country names and their url
+                    console.log("number of countries is: " + res.length);
                     var arrayCountry = []
                     var outputStringAll =``
-                    for (let i=0; i<22; i++){
+                    for (let i=0; i<res.length; i++){
                         countryDict=`{num: ${i}, name: ${res[i].name}, url: https://restcountries.eu/rest/v2/alpha/${res[i].alpha3Code}}`
                         arrayCountry.push(countryDict)
-                        outputStringAll += `<p>num: ${i}, name: ${res[i].name}, url: <a href="https://restcountries.eu/rest/v2/alpha/${res[i].alpha3Code}">https://restcountries.eu/rest/v2/alpha/${res[i].alpha3Code}</a></p>` 
+                        //outputStringAll += `<p>num: ${i}, name: ${res[i].name}, url: <a href="https://restcountries.eu/rest/v2/alpha/${res[i].alpha3Code}">https://restcountries.eu/rest/v2/alpha/${res[i].alpha3Code}</a></p>` 
+                        outputStringAll += `<p>num: ${i}, name: ${res[i].name}, </p>` 
                     }
                     console.log(arrayCountry);
                     console.log(outputStringAll);
                     document.getElementById("p2").innerHTML = outputStringAll;
 
+                    $('#button').click(function(){
+                        var retrieveNumber= ($('#formCountryNumber'))[0].value;
+                        console.log(retrieveNumber);
 
-                    console.log(res);
-                    var countryNumber = 0;
-                    console.log("country number:  " + countryNumber + " is: ");
-                    console.log(res[0]);
-                    console.log("The name is:  " + res[countryNumber].name);
-                    console.log("This country borders:  " + res[countryNumber].borders);
-                    console.log("the countries languages is/are:  ");
-                    var theLanguages=[];
-                    for (let i=0; i<res[countryNumber].languages.length; i++){
-                        theLanguages.push(res[countryNumber].languages[i].name);
-                    }
-                    console.log(theLanguages);
-                    let outputToDOM = `<p>The country name is:  ${res[countryNumber].name}</p>
+                        console.log(res);
+                        var countryNumber = retrieveNumber;
+                        console.log("country number:  " + countryNumber + " is: ");
+                        console.log(res[0]);
+                        console.log("The name is:  " + res[countryNumber].name);
+                        console.log("This country borders:  " + res[countryNumber].borders);
+                        console.log("the countries languages is/are:  ");
+                        var theLanguages=[];
+                        for (let i=0; i<res[countryNumber].languages.length; i++){
+                            theLanguages.push(res[countryNumber].languages[i].name);
+                        }
+                        console.log(theLanguages);
+                        let outputToDOM = `<p>The country name is:  ${res[countryNumber].name}</p>
                         <p>The country borders:  ${res[countryNumber].borders}</p>
                         <p>Languages of this country:  ${toSentence(theLanguages)}.</p>
-                    `;
-                    
-                    
-                    document.getElementById("p1").innerHTML = outputToDOM;
+                        <hr>
+                        `;
+                        
+                        
+                        document.getElementById("p1").innerHTML = outputToDOM;
+                    })
                     
                     //console.log("species is:  ");
                     //console.log(res.species['url']);
@@ -73,7 +81,7 @@
                     //document.write(res.name);
                 }, "json");
 
-                $('#button').click(function(){
+                $('#xbutton').click(function(){
                     console.log("you clicked me");
                     var other= ($('#username'))[0].value;
                     console.log("other is: " + other);
@@ -105,9 +113,20 @@
 
     </head>
     <body>
-        <div id="p1">asdfff
+
+            <fieldset>
+                <legend>Scroll down to find a country number, then enter in blank below</legend>
+                <input type="text"  id="formCountryNumber" name="formCountryNumber" placeholder="put country numberhere" value=0>
+                <button id="button">Click to retreive country info</button>
+
+            </fieldset>
 
 
+
+
+        <div id="p1">Country Information will appear here after you click
+
+        <hr>
         </div>
         <div id="p2">asdfff
 
@@ -120,9 +139,3 @@
 </html>
 
 
-            <!-- <fieldset>
-                <legend>GitHub retrieveal</legend>
-                <input type="text"  id="username" name="username" placeholder="put login name here">
-                <button id="button">Click to retreive GitHub Name</button>
-                <div id="tagbelowbutton">starting content</div>
-            </fieldset> -->
