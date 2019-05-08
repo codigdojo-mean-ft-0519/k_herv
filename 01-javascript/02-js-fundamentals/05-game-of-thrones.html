@@ -19,6 +19,26 @@ Baratheon: 17
     <head>
         <meta charset="utf-8">
         <title>World Information</title>
+
+        <style>
+                body {
+                    /* background-color:black; */
+                    /* font-family: monospace;
+                    color:white;
+                    font-size:50px;
+                    text-align: center;
+                    margin-top:20%; */
+                }
+                .houseImages {
+                    /*color: #777;*/
+                    width: 175px;
+                    
+                    display: inline-block;
+                }
+            </style>
+
+
+
         <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 
@@ -42,7 +62,8 @@ Baratheon: 17
                     console.log(res['words']);
                     var resultTitles =res['titles'];
                     console.log(toSentence(resultTitles)+".");
-                    var outputStringAll =`<legend>House Details</legend><p>Name:  ${res['name']}</p>
+                    var outputStringAll =`<p>${houseNumber}</p>
+                    <legend>House Details</legend><p>Name:  ${res['name']}</p>
                         <p>Words: ${res['words']}</p>
                         <p>Titles: ${toSentence(resultTitles)}.`
                     document.getElementById("houseDetails").innerHTML = outputStringAll;
@@ -62,35 +83,10 @@ Baratheon: 17
 
                     $('#button').click(function(){
                         var retrieveNumber= ($('#formCountryNumber'))[1].value;
-                        //console.log(retrieveNumber);
 
-                        //console.log(res);
-                        var countryNumber = retrieveNumber;
-                        //console.log("country number:  " + countryNumber + " is: ");
-                        //console.log(res[0]);
-                        //console.log("The name is:  " + res[countryNumber].name);
-                        //console.log("This country borders:  " + res[countryNumber].borders);
-                        //console.log("the countries languages is/are:  ");
-                        // var theLanguages=[];
-                        // for (let i=0; i<res[countryNumber].languages.length; i++){
-                        //     theLanguages.push(res[countryNumber].languages[i].name);
-                        // }
-                        //console.log(theLanguages);
-                        //let outputToDOM = `<p>The country name is:  ${res[countryNumber].name}</p>
-                        // <p>The country borders:  ${res[countryNumber].borders}</p>
-                        // <p>Languages of this country:  ${toSentence(theLanguages)}.</p>
-                        // <hr>
-                        // `;
-                        
-                        
-                        document.getElementById("p1").innerHTML = outputToDOM;
                     })
                     
-                    //console.log("species is:  ");
-                    //console.log(res.species['url']);
-                    //document.getElementById("p1").innerHTML = "the top function says:  " + res.name;
-                    //document.getElementById("tagbelowbutton").innerHTML = res.name;                    
-                    //document.write(res.name);
+
                 }, "json");
 
                 $('#xbutton').click(function(){
@@ -99,24 +95,8 @@ Baratheon: 17
                     console.log("other is: " + other);
                     var myLogin ="blaurent123";
                     myLogin = other
-                    $.get("https://api.github.com/users/"+myLogin, displayName) 
-                    console.log("here?");
-                    // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
-                    function displayName(data) {
-                        // var dispForm= $(this).attr("#username");
-                        // var dispForm = $('#username');
-                        // var disp2=dispForm[0].value
-                        // console.log("should be just login: " + disp2);
-                        // console.log("displayn:  ");
-                        // console.log(dispForm[0].value);
-                        // console.log(dispForm);
-                        console.log(data);
-                        console.log(data.followers);
-                        console.log("name now is:  " + data.name);
-                        var outputString = "<p>Full Name of user is:  " + data.name + "</p>"
-                        outputString += "<p> And the URL is:  " + data.url + "</p>"
-                        document.getElementById("tagbelowbutton").innerHTML=outputString;
-                    }
+
+                    
                 })
 
 
@@ -125,32 +105,28 @@ Baratheon: 17
 
     </head>
     <body>
-
-            <!-- <fieldset>
-                <legend>Scroll down to find a country number, then enter in blank below</legend>
-                <input type="text"  id="formCountryNumber" name="formCountryNumber" placeholder="put country numberhere" value=0>
-                <button id="button">Click to retreive country info</button>
-
-            </fieldset> -->
-
-
+            <div id="threeImages">
+                <img class="houseImages" src="assets/gameofthrones/stark.jpg" alt="house of stark" >
+                <img class="houseImages" src="assets/gameofthrones/lannister.jpg" alt="house of lannister" >
+                <img class="houseImages" src="assets/gameofthrones/targaryen.jpg" alt="house of targaryen" >
+                <img class="houseImages" src="assets/gameofthrones/baratheon.png" alt="house of baratheon" >
+    
+            </div>
+    
             <fieldset id="houseDetails">
-
-
+                <legend>House Details</legend>
+    
             </fieldset>
-
+    
         <div id="p1">inside the p1 div
-
+    
         <hr>
         </div>
-        <div id="p2">inside p2
-
-
-            </div>
-
-
-
-    </body>
+    
+    
+    
+    
+        </body>
 </html>
 
 
