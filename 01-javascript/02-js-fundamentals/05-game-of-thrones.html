@@ -44,85 +44,14 @@ Baratheon: 17
                 arr.slice(-2).join(', and ');
             }
             $(document).ready(function(){
-                $('#stark').click(function(){
-                    console.log("did I click");
-                    console.log("houseNumber is next");
-                var houseNumber= 362
-                var retrieveNumber= ($('.houseImage'))[0];
-                console.log(houseNumber);
-                console.log("testerman is next");
-                //console.log($('#testerman')[0].attributes.value);
-                
-                    $.get("https://anapioficeandfire.com/api/houses/"+houseNumber, function(res) {
-                        console.log(res);
-                        console.log(res['name']);
-                        console.log(res['words']);
-                        var resultTitles =res['titles'];
-                        console.log(toSentence(resultTitles)+".");
-                        var outputStringAll =`<p>${houseNumber}</p>
-                        <legend>House Details</legend><p>Name:  ${res['name']}</p>
-                            <p>Words: ${res['words']}</p>
-                            <p>Titles: ${toSentence(resultTitles)}.`
-                        document.getElementById("houseDetails").innerHTML = outputStringAll;
-                    }, "json");
-                })
-                //2nd one
-                $('#lannister').click(function(){
-                    console.log("did I click");
-                    console.log("houseNumber is next");
-                var houseNumber= 229
-                var retrieveNumber= ($('.houseImage'))[0];
-                console.log(houseNumber);
-                console.log("testerman is next");
-                //console.log($('#testerman')[0].attributes.value);
-                
-                    $.get("https://anapioficeandfire.com/api/houses/"+houseNumber, function(res) {
-                        console.log(res);
-                        console.log(res['name']);
-                        console.log(res['words']);
-                        var resultTitles =res['titles'];
-                        console.log(toSentence(resultTitles)+".");
-                        var outputStringAll =`<p>${houseNumber}</p>
-                        <legend>House Details</legend><p>Name:  ${res['name']}</p>
-                            <p>Words: ${res['words']}</p>
-                            <p>Titles: ${toSentence(resultTitles)}.`
-                        document.getElementById("houseDetails").innerHTML = outputStringAll;
-                    }, "json");
-                })
-                //3rd one
-                $('#targaryen').click(function(){
-                    console.log("did I click");
-                    console.log("houseNumber is next");
-                var houseNumber= 378
-                var retrieveNumber= ($('.houseImage'))[0];
-                console.log(houseNumber);
-                console.log("testerman is next");
-                //console.log($('#testerman')[0].attributes.value);
-                
-                    $.get("https://anapioficeandfire.com/api/houses/"+houseNumber, function(res) {
-                        console.log(res);
-                        console.log(res['name']);
-                        console.log(res['words']);
-                        var resultTitles =res['titles'];
-                        console.log(toSentence(resultTitles)+".");
-                        var outputStringAll =`<p>${houseNumber}</p>
-                        <legend>House Details</legend><p>Name:  ${res['name']}</p>
-                            <p>Words: ${res['words']}</p>
-                            <p>Titles: ${toSentence(resultTitles)}.`
-                        document.getElementById("houseDetails").innerHTML = outputStringAll;
-                    }, "json");
-                })
 
-                //4th one
-                $('#baratheon').click(function(){
-                    console.log("did I click");
-                    console.log("houseNumber is next");
-                var houseNumber= 17
-                var retrieveNumber= ($('.houseImage'))[0];
-                console.log(houseNumber);
-                console.log("testerman is next");
-                //console.log($('#testerman')[0].attributes.value);
+                $('img').on('click',function(){
+                    console.log("image was clicked" + "");
+                    const houseNumber=$(this).data('house')
+                    getHouse(houseNumber);
+                })
                 
+                function getHouse(houseNumber){
                     $.get("https://anapioficeandfire.com/api/houses/"+houseNumber, function(res) {
                         console.log(res);
                         console.log(res['name']);
@@ -135,17 +64,19 @@ Baratheon: 17
                             <p>Titles: ${toSentence(resultTitles)}.`
                         document.getElementById("houseDetails").innerHTML = outputStringAll;
                     }, "json");
-                })
+                }
+
+
             })
         </script>
 
     </head>
     <body>
             <div id="fourImages">
-                <img class="houseImages" id="stark" src="assets/gameofthrones/stark.jpg" alt="house of stark" value=362>
-                <img class="houseImages" id="lannister" src="assets/gameofthrones/lannister.jpg" alt="house of lannister" value=229>
-                <img class="houseImages" id="targaryen" src="assets/gameofthrones/targaryen.jpg" alt="house of targaryen" value=378>
-                <img class="houseImages" id="baratheon" src="assets/gameofthrones/baratheon.png" alt="house of baratheon" value=17>
+                <img class="houseImages" data-house=362 id="stark" src="assets/gameofthrones/stark.jpg" alt="house of stark" value=362>
+                <img class="houseImages" data-house=229 src="assets/gameofthrones/lannister.jpg" alt="house of lannister" value=229>
+                <img class="houseImages" data-house=378 src="assets/gameofthrones/targaryen.jpg" alt="house of targaryen" value=378>
+                <img class="houseImages" data-house=17 src="assets/gameofthrones/baratheon.png" alt="house of baratheon" value=17>
             </div>
             <fieldset id="houseDetails">
                 <legend>House Details</legend>
