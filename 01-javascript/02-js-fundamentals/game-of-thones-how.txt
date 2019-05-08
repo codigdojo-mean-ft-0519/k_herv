@@ -1,0 +1,28 @@
+started and complted 5/7/19 p.m.
+
+Written 5/8/19 a.m.
+1.  Explored the source API
+2.  Adapted previous practice project's JQuery code to console.log for one house using a variable in the URL planning to vary it depending on clicked picture
+3.  Having obtained the needed information for output via consol.log....
+4.  In the JQuery section, created a string of html content that would then be output via innerHTML to a fieldset for presentation
+5.  Created html and csss for the four images
+6.  Created JQueary that recognized user clicking the images
+7.  Spent much time trying to get one click function to work and stil know which image was clicked
+8.  Changed to have one click function, but plannned to use the immediately available house number and only have one get and one string builder
+9.  Scope prevented that, so repeated almost all JQuery code three times for one per image
+10.  Now thinking the scope problem could be solved, partially, by declaring the houseNumber, and outputString variable at the top of the script tag
+
+
+
+
+
+
+Below is some code from practice project:
+
+                $('#button').click(function(){
+                    console.log("you clicked me");
+                    var other= ($('#username'))[0].value;
+                    console.log("other is: " + other);
+                    var myLogin ="blaurent123";
+                    myLogin = other
+                })
