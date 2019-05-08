@@ -65,13 +65,6 @@ function Ninja(name, health=100) {
 // // -> "Bill Gates was kicked by Goemon and lost 15 Health!"
 // // In this case, redNinja Bill Gates lost 15 health because blueNinja Goemon has 1 point of strength
 
-
-
-
-
-
-
-
 }
 
 
