@@ -3,7 +3,7 @@
 
 
 function leadBootcamp(language, leader){ //SS newer:  incoming parameters, language & leader; leader is a callback.....prev sSteen:  calls another function [huh?] and logs the result [I suppose console.log(outcome)]
-    var outcome = leader(language);  //SS newer: this line calls another function, named leader [I don't see a function named leader]...prev sSteen:  And then, inside the leadBootcamp function, line 2, we actually invoke the Mike function [really because I don't see "Mike" here]
+    var outcome = leader(language);  //KH newer:  Does this say leader is the function Mike because Mike was passed in as leader and Mike is a function, so when we do the leader(language) we are really doing Mike(language)???   SS newer: this line calls another function, named leader [I don't see a function named leader]...prev sSteen:  And then, inside the leadBootcamp function, line 2, we actually invoke the Mike function [really because I don't see "Mike" here]
     console.log("ran this in leadBootcamp")  //I added this to try....
     console.log(outcome);  // SS: this logs the result of function (leader) called on line 6
 }
