@@ -50,14 +50,9 @@ Baratheon: 17
                     const houseNumber=$(this).data('house')
                     getHouse(houseNumber);
                 })
-                
                 function getHouse(houseNumber){
                     $.get("https://anapioficeandfire.com/api/houses/"+houseNumber, function(res) {
-                        console.log(res);
-                        console.log(res['name']);
-                        console.log(res['words']);
                         var resultTitles =res['titles'];
-                        console.log(toSentence(resultTitles)+".");
                         var outputStringAll =`<p>${houseNumber}</p>
                         <legend>House Details</legend><p>Name:  ${res['name']}</p>
                             <p>Words: ${res['words']}</p>
@@ -65,8 +60,6 @@ Baratheon: 17
                         document.getElementById("houseDetails").innerHTML = outputStringAll;
                     }, "json");
                 }
-
-
             })
         </script>
 
