@@ -2,12 +2,12 @@
 //Delegating
 
 
-function leadBootcamp(language, leader){
+function leadBootcamp(language, leader){ //sSteen:  calls another function [huh?] and logs the result [I suppose console.log(outcome)]
     var outcome = leader(language);
-    console.log("ran this in leadBootcamp")
+    console.log("ran this in leadBootcamp")  //I added this to try....
     console.log(outcome);
 }
-function Mike(language){
+function Mike(language){ //sSteen: defined Mike - this function will look to see if a given language is in a dictionary of languages, and perform logic accordingly.  [I guess line 54 passes in 'java_android' which is not mentioned in 11-15, so this Mike function returns from line 21?]
   var languages={
     'javascript':'successful leader',
     'PHP':'successful leader',
@@ -52,8 +52,8 @@ function Jimmy(language){
   }
 }
 leadBootcamp('java_android', Mike);
-// leadBootcamp('java_android', Charlie);
-// leadBootcamp('java_android', Jimmy);
+// leadBootcamp('java_android', Charlie); //originally uncommented
+// leadBootcamp('java_android', Jimmy);  //originally uncommented
 
 ///////////////////////////
 console.log("\nSecond Example\n");
