@@ -82,52 +82,52 @@ var server = http.createServer(function (request, response){
         });
     }
 
-    else if(request.url === '/images/car1.jpg'){
-        // notice we won't include the utf8 encoding
-        fs.readFile('./images/car1.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-      }
+    // else if(request.url === '/images/car1.jpg'){
+    //     // notice we won't include the utf8 encoding
+    //     fs.readFile('./images/car1.jpg', function(errors, contents){
+    //         response.writeHead(200, {'Content-type': 'image/jpg'});
+    //         response.write(contents);
+    //         response.end();
+    //     })
+    //   }
 
-      else if(request.url === '/images/car2.jpg'){
-        // notice we won't include the utf8 encoding
-        fs.readFile('./images/car2.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-      }
+    //   else if(request.url === '/images/car2.jpg'){
+    //     // notice we won't include the utf8 encoding
+    //     fs.readFile('./images/car2.jpg', function(errors, contents){
+    //         response.writeHead(200, {'Content-type': 'image/jpg'});
+    //         response.write(contents);
+    //         response.end();
+    //     })
+    //   }
 
-      else if(request.url === '/images/car3.jpg'){
-        // notice we won't include the utf8 encoding
-        fs.readFile('./images/car3.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-      }
-
-
-      else if(request.url === '/images/donkey1.jpg'){
-        // notice we won't include the utf8 encoding
-        fs.readFile('./images/donkey1.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-      }
+    //   else if(request.url === '/images/car3.jpg'){
+    //     // notice we won't include the utf8 encoding
+    //     fs.readFile('./images/car3.jpg', function(errors, contents){
+    //         response.writeHead(200, {'Content-type': 'image/jpg'});
+    //         response.write(contents);
+    //         response.end();
+    //     })
+    //   }
 
 
-      else if(request.url === '/images/donkey2.jpg'){
-        // notice we won't include the utf8 encoding
-        fs.readFile('./images/donkey2.jpg', function(errors, contents){
-            response.writeHead(200, {'Content-type': 'image/jpg'});
-            response.write(contents);
-            response.end();
-        })
-      }
+    //   else if(request.url === '/images/donkey1.jpg'){
+    //     // notice we won't include the utf8 encoding
+    //     fs.readFile('./images/donkey1.jpg', function(errors, contents){
+    //         response.writeHead(200, {'Content-type': 'image/jpg'});
+    //         response.write(contents);
+    //         response.end();
+    //     })
+    //   }
+
+
+    //   else if(request.url === '/images/donkey2.jpg'){
+    //     // notice we won't include the utf8 encoding
+    //     fs.readFile('./images/donkey2.jpg', function(errors, contents){
+    //         response.writeHead(200, {'Content-type': 'image/jpg'});
+    //         response.write(contents);
+    //         response.end();
+    //     })
+    //   }
 
     else if(request.url === '/stylesheets/style.css'){
         fs.readFile('./stylesheets/style.css', 'utf8', function(errors, contents){
@@ -139,13 +139,13 @@ var server = http.createServer(function (request, response){
 
 
 
-    // else if( /images/(jpg|png|gif)$/i.test(request.url) ) {  //accept images here
-    //     fs.readFile(request.url.replace('/',''), 'utf8', function (errors, contents){
-    //         response.writeHead(200, {'Content-Type': 'image/*'});  // send data about response
-    //         response.write(contents);  //  send response body
-    //         response.end(); // finished!
-    //     });
-    // }
+    else if( request.url ) {  //accept images here
+        fs.readFile(request.url.replace('/',''),function (errors, contents){
+            response.writeHead(200, {'Content-Type': 'image/jpg'});  // send data about response
+            response.write(contents);  //  send response body
+            response.end(); // finished!
+        });
+    }
 
 
 // Have localhost:7077/cars go to a simple HTML page that shows some cool pictures of different cars.  These car pictures should be stored in your images folder on your server.  DON'T just link to pictures of cars stored somewhere else!!
