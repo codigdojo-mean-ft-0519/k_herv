@@ -51,7 +51,7 @@ function Jimmy(language){
     return "maybe not yet";
   }
 }
-leadBootcamp('java_android', Mike);
+leadBootcamp('java_android', Mike); //sSteen:  Mike is the callback. The Mike function is getting passed into the leadBootcamp function [huh...the Mike function...there is no Mike function]
 // leadBootcamp('java_android', Charlie); //originally uncommented
 // leadBootcamp('java_android', Jimmy);  //originally uncommented
 
