@@ -2,10 +2,10 @@
 //Delegating
 
 
-function leadBootcamp(language, leader){ //SS newer:  incoming parameters, language & leader; leader is a callback.....sSteen:  calls another function [huh?] and logs the result [I suppose console.log(outcome)]
-    var outcome = leader(language);  //sSteen:  And then, inside the leadBootcamp function, line 2, we actually invoke the Mike function [really because I don't see "Mike" here]
+function leadBootcamp(language, leader){ //SS newer:  incoming parameters, language & leader; leader is a callback.....prev sSteen:  calls another function [huh?] and logs the result [I suppose console.log(outcome)]
+    var outcome = leader(language);  //SS newer: this line calls another function, named leader [I don't see a function named leader]...prev sSteen:  And then, inside the leadBootcamp function, line 2, we actually invoke the Mike function [really because I don't see "Mike" here]
     console.log("ran this in leadBootcamp")  //I added this to try....
-    console.log(outcome);
+    console.log(outcome);  // SS: this logs the result of function (leader) called on line 
 }
 function Mike(language){ //sSteen: defined Mike - this function will look to see if a given language is in a dictionary of languages, and perform logic accordingly.  [I guess line 54 passes in 'java_android' which is not mentioned in 11-15, so this Mike function returns from line 21?]
   var languages={
@@ -51,7 +51,7 @@ function Jimmy(language){
     return "maybe not yet";
   }
 }
-leadBootcamp('java_android', Mike); //sSteen:  Mike is the callback. The Mike function is getting passed into the leadBootcamp function [huh...the Mike function...there is no Mike function...okay there is a Mike function on line 10, but it is not down here, so how can we pass it in?]
+leadBootcamp('java_android', Mike); //SS newer Mike is a function; when passed into leadBootcamp(language, leader) it gets 'renamed' to leader...prev sSteen:  Mike is the callback. The Mike function is getting passed into the leadBootcamp function [huh...the Mike function...there is no Mike function...okay there is a Mike function on line 10, but it is not down here, so how can we pass it in?]
 // leadBootcamp('java_android', Charlie); //originally uncommented
 // leadBootcamp('java_android', Jimmy);  //originally uncommented
 
