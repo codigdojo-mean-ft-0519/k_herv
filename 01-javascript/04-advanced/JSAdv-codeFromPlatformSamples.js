@@ -2,8 +2,8 @@
 //Delegating
 
 
-function leadBootcamp(language, leader){ //sSteen:  calls another function [huh?] and logs the result [I suppose console.log(outcome)]
-    var outcome = leader(language);
+function leadBootcamp(language, leader){ //SS newer:  incoming parameters, language & leader; leader is a callback.....sSteen:  calls another function [huh?] and logs the result [I suppose console.log(outcome)]
+    var outcome = leader(language);  //sSteen:  And then, inside the leadBootcamp function, line 2, we actually invoke the Mike function [really because I don't see "Mike" here]
     console.log("ran this in leadBootcamp")  //I added this to try....
     console.log(outcome);
 }
