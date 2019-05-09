@@ -5,7 +5,7 @@
 function leadBootcamp(language, leader){ //SS newer:  incoming parameters, language & leader; leader is a callback.....prev sSteen:  calls another function [huh?] and logs the result [I suppose console.log(outcome)]
     var outcome = leader(language);  //SS newer: this line calls another function, named leader [I don't see a function named leader]...prev sSteen:  And then, inside the leadBootcamp function, line 2, we actually invoke the Mike function [really because I don't see "Mike" here]
     console.log("ran this in leadBootcamp")  //I added this to try....
-    console.log(outcome);  // SS: this logs the result of function (leader) called on line 
+    console.log(outcome);  // SS: this logs the result of function (leader) called on line 6
 }
 function Mike(language){ //sSteen: defined Mike - this function will look to see if a given language is in a dictionary of languages, and perform logic accordingly.  [I guess line 54 passes in 'java_android' which is not mentioned in 11-15, so this Mike function returns from line 21?]
   var languages={
