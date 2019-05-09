@@ -51,6 +51,8 @@ function Jimmy(language){
     return "maybe not yet";
   }
 }
+console.log("next is console dot log of Mike");
+console.log(Mike);
 leadBootcamp('java_android', Mike); //SS newer Mike is a function; when passed into leadBootcamp(language, leader) it gets 'renamed' to leader...prev sSteen:  Mike is the callback. The Mike function is getting passed into the leadBootcamp function [huh...the Mike function...there is no Mike function...okay there is a Mike function on line 10, but it is not down here, so how can we pass it in?]
 // leadBootcamp('java_android', Charlie); //originally uncommented
 // leadBootcamp('java_android', Jimmy);  //originally uncommented
