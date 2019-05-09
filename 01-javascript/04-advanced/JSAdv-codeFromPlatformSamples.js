@@ -3,7 +3,7 @@
 
 
 function leadBootcamp(language, leader){ //SS newer:  incoming parameters, language & leader; leader is a callback.....prev sSteen:  calls another function [huh?] and logs the result [I suppose console.log(outcome)]
-    var outcome = leader(language);  //KH newer:  Does this say leader is the function Mike because Mike was passed in as leader and Mike is a function, so when we do the leader(language) we are really doing Mike(language)???   SS newer: this line calls another function, named leader [I don't see a function named leader]...prev sSteen:  And then, inside the leadBootcamp function, line 2, we actually invoke the Mike function [really because I don't see "Mike" here]
+    var outcome = leader(language);  //SS newer:  leader is parameter name of the function being passed in (which in this case, is Mike)...prev KH newer:  Does this say leader is the function Mike because Mike was passed in as leader and Mike is a function, so when we do the leader(language) we are really doing Mike(language)???   SS newer: this line calls another function, named leader [I don't see a function named leader]...prev sSteen:  And then, inside the leadBootcamp function, line 2, we actually invoke the Mike function [really because I don't see "Mike" here]
     console.log("ran this in leadBootcamp")  //I added this to try....
     console.log(outcome);  // SS: this logs the result of function (leader) called on line 6
 }
@@ -98,11 +98,28 @@ function getStuffFromDatabase(callback){
     // it takes 10 seconds to get anything back <- you should fix your cloud server.!!!
     return data;
   }    
-  //simulated request (failing);
-  function requestDataFromDatabase(){
-    var data = getStuffFromDatabase(); // this should return my data right??
-    console.log(data);
-  }
+
+    //in second version, the below was all deleted by CD platform to be replaced by  ***CHANGES HERE***
+        // //simulated request (failing);
+        // function requestDataFromDatabase(){
+        //   var data = getStuffFromDatabase(); // this should return my data right??
+        //   console.log("I added this log to show it is just before the console dot log data");
+        //   console.log(data);
+        // }
+// ************CHANGES HERE **************
+function requestDataFromDatabase(){
+  var data = getStuffFromDatabase(function myCallback(data){ // ooh shiny callback!.. when is it invoked???
+    console.log(data, "ASynchronous");
+    for (var i = 0; i < data.length; i ++){
+      console.log(data[i].name);
+    }
+  });
+  console.log(data, "Synchronous");
+}
+//***************** END CHANGES **********************
+
+
+
   function catchFly(){
     console.log('I just caught a fly!');
   }
