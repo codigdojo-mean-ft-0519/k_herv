@@ -1,0 +1,179 @@
+
+<!-- The Game of Thrones API is located here: ASOIAF. Their documentation is great and will show how to use their API. Images you may use are found here: Houses
+
+Note: An API Key is not needed.
+
+When a User clicks an Image, the House Details should be appended or updated with the correct House information pulled from the API. For full names of the houses, you may check this entry.
+
+House IDs
+Stark: 362
+Targaryen: 378
+Lannister: 229
+Baratheon: 17 
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>World Information</title>
+
+        <style>
+                body {
+                    /* background-color:black; */
+                    /* font-family: monospace;
+                    color:white;
+                    font-size:50px;
+                    text-align: center;
+                    margin-top:20%; */
+                }
+                .houseImages {
+                    /*color: #777;*/
+                    width: 175px;
+                    height: 95px;
+                    
+                    display: inline-block;
+                }
+            </style>
+
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+        <script>
+            function toSentence(arr) { //outputs an array
+            return arr.slice(0, -2).join(', ') + 
+                (arr.slice(0, -2).length ? ', ' : '') + 
+                arr.slice(-2).join(', and ');
+            }
+            $(document).ready(function(){
+                $('#stark').click(function(){
+                    console.log("did I click");
+                    console.log("houseNumber is next");
+                var houseNumber= 362
+                var retrieveNumber= ($('.houseImage'))[0];
+                console.log(houseNumber);
+                console.log("testerman is next");
+                //console.log($('#testerman')[0].attributes.value);
+                
+                    $.get("https://anapioficeandfire.com/api/houses/"+houseNumber, function(res) {
+                        console.log(res);
+                        console.log(res['name']);
+                        console.log(res['words']);
+                        var resultTitles =res['titles'];
+                        console.log(toSentence(resultTitles)+".");
+                        var outputStringAll =`<p>${houseNumber}</p>
+                        <legend>House Details</legend><p>Name:  ${res['name']}</p>
+                            <p>Words: ${res['words']}</p>
+                            <p>Titles: ${toSentence(resultTitles)}.`
+                        document.getElementById("houseDetails").innerHTML = outputStringAll;
+                    }, "json");
+                })
+                //2nd one
+                $('#lannister').click(function(){
+                    console.log("did I click");
+                    console.log("houseNumber is next");
+                var houseNumber= 229
+                var retrieveNumber= ($('.houseImage'))[0];
+                console.log(houseNumber);
+                console.log("testerman is next");
+                //console.log($('#testerman')[0].attributes.value);
+                
+                    $.get("https://anapioficeandfire.com/api/houses/"+houseNumber, function(res) {
+                        console.log(res);
+                        console.log(res['name']);
+                        console.log(res['words']);
+                        var resultTitles =res['titles'];
+                        console.log(toSentence(resultTitles)+".");
+                        var outputStringAll =`<p>${houseNumber}</p>
+                        <legend>House Details</legend><p>Name:  ${res['name']}</p>
+                            <p>Words: ${res['words']}</p>
+                            <p>Titles: ${toSentence(resultTitles)}.`
+                        document.getElementById("houseDetails").innerHTML = outputStringAll;
+                    }, "json");
+                })
+                //3rd one
+                $('#targaryen').click(function(){
+                    console.log("did I click");
+                    console.log("houseNumber is next");
+                var houseNumber= 378
+                var retrieveNumber= ($('.houseImage'))[0];
+                console.log(houseNumber);
+                console.log("testerman is next");
+                //console.log($('#testerman')[0].attributes.value);
+                
+                    $.get("https://anapioficeandfire.com/api/houses/"+houseNumber, function(res) {
+                        console.log(res);
+                        console.log(res['name']);
+                        console.log(res['words']);
+                        var resultTitles =res['titles'];
+                        console.log(toSentence(resultTitles)+".");
+                        var outputStringAll =`<p>${houseNumber}</p>
+                        <legend>House Details</legend><p>Name:  ${res['name']}</p>
+                            <p>Words: ${res['words']}</p>
+                            <p>Titles: ${toSentence(resultTitles)}.`
+                        document.getElementById("houseDetails").innerHTML = outputStringAll;
+                    }, "json");
+                })
+
+                //4th one
+                $('#baratheon').click(function(){
+                    console.log("did I click");
+                    console.log("houseNumber is next");
+                var houseNumber= 17
+                var retrieveNumber= ($('.houseImage'))[0];
+                console.log(houseNumber);
+                console.log("testerman is next");
+                //console.log($('#testerman')[0].attributes.value);
+                
+                    $.get("https://anapioficeandfire.com/api/houses/"+houseNumber, function(res) {
+                        console.log(res);
+                        console.log(res['name']);
+                        console.log(res['words']);
+                        var resultTitles =res['titles'];
+                        console.log(toSentence(resultTitles)+".");
+                        var outputStringAll =`<p>${houseNumber}</p>
+                        <legend>House Details</legend><p>Name:  ${res['name']}</p>
+                            <p>Words: ${res['words']}</p>
+                            <p>Titles: ${toSentence(resultTitles)}.`
+                        document.getElementById("houseDetails").innerHTML = outputStringAll;
+                    }, "json");
+                })
+            })
+        </script>
+
+    </head>
+    <body>
+            <div id="fourImages">
+                <img class="houseImages" id="stark" src="assets/gameofthrones/stark.jpg" alt="house of stark" value=362>
+                <img class="houseImages" id="lannister" src="assets/gameofthrones/lannister.jpg" alt="house of lannister" value=229>
+                <img class="houseImages" id="targaryen" src="assets/gameofthrones/targaryen.jpg" alt="house of targaryen" value=378>
+                <img class="houseImages" id="baratheon" src="assets/gameofthrones/baratheon.png" alt="house of baratheon" value=17>
+            </div>
+            <fieldset id="houseDetails">
+                <legend>House Details</legend>
+                <p>click image to populate this area with house information</p>
+            </fieldset>
+        </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
