@@ -79,8 +79,8 @@ app.get('/cats/trouble', function(request, response) {
 
 app.get('/cats/twotone', function(request, response) {
   // just for fun, take a look at the request and response objects
- //console.log("The request object", request);
- //console.log("The response object", response);
+ console.log("The request object", request);
+ console.log("The response object-----------------------------------------------------------------------", response);
  // use the response object's .send() method to respond with an h1
  response.render('twotone');
 })
