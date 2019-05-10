@@ -16,3 +16,5 @@ npm install io.socket
 mpm install session
 
 Hi it's me
+
+---don't forget to rebase (git pull before any commits)
