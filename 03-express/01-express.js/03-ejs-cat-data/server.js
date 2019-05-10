@@ -74,13 +74,13 @@ app.get('/cats/trouble', function(request, response) {
  //console.log("The request object", request);
  //console.log("The response object", response);
  // use the response object's .send() method to respond with an h1
-  var users_array = [
-    {name: "Michael", email: "michael@codingdojo.com"}, 
-    {name: "Jay", email: "jay@codingdojo.com"}, 
-    {name: "Brendan", email: "brendan@codingdojo.com"}, 
-    {name: "Andrew", email: "andrew@codingdojo.com"}
-  ];
-  response.render('details', {users: users_array});
+ var cats_array = [
+  {name: "Two Tone"}, 
+  {food: "mice"}, 
+  {sleep: "Window"}, 
+  {age: "4"}
+];
+  response.render('details', {cats: cats_array});
 })
 
 app.get('/cats/twotone', function(request, response) {
