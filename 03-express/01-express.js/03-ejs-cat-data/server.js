@@ -74,13 +74,9 @@ app.get('/cats/trouble', function(request, response) {
  //console.log("The request object", request);
  //console.log("The response object", response);
  // use the response object's .send() method to respond with an h1
- var cats_array = [
-  {name: "Two Tone"}, 
-  {food: "mice"}, 
-  {sleep: "Window"}, 
-  {age: "4"}
-];
-  response.render('details', {cats: cats_array});
+ var catName="Two Tone";
+ var cats_array = [{name: "Two Tone", food: "mice", sleep: ["Window", "corner"], age: "4"}];
+  response.render('details', {cats: cats_array}, catName );
 })
 
 app.get('/cats/twotone', function(request, response) {
@@ -88,13 +84,9 @@ app.get('/cats/twotone', function(request, response) {
  console.log("The request object", request);
  console.log("The response object-----------------------------------------------------------------------", response);
  // use the response object's .send() method to respond with an h1
- var cats_array = [
-  {name: "Two Tone"}, 
-  {food: "mice"}, 
-  {sleep: "Window"}, 
-  {age: "4"}
-];
-response.render('details', {cats: cats_array});
+ var catName="Two Tone";
+ var cats_array = [{name: "Two Tone", food: "mice", sleep: ["box", "chair"], age: "5"}];
+response.render('details', {cats: cats_array}, catName );
  response.render('details');
 })
 

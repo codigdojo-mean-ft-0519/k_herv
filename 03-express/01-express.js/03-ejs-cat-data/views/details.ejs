@@ -7,10 +7,10 @@
     </head>
 
 <body>
-    <h2>Info about this cat:</h2>
+    <h2>Info about <%catName%>:</h2>
     <% for (var x in cats) { %>
         <h3>Name: <%= cats[x].name %></h3>
-        <h4>Food: <%= food[x].email %></h4>
+        <h4>Food: <%= cats[x].food %></h4>
         <hr>
     <% } %>
 </body>
