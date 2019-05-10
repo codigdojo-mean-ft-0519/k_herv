@@ -1,0 +1,15 @@
+body {
+    /* background-color:black; */
+    /* font-family: monospace;
+    color:white;
+    font-size:50px;
+    text-align: center;
+    margin-top:20%; */
+}
+img {
+    /*color: #777;*/
+    width: 175px;
+    height: 95px;
+    
+    display: inline-block;
+}
