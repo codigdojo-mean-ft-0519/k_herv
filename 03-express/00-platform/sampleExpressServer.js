@@ -5,7 +5,7 @@ const path = require('path');
 const port = process.env.PORT || 8000;
 const app = express();
 
-var session = require('express-session');
+var session = require('express-session');  //reference for session:  https://flaviocopes.com/express-sessions/
 
 app.use(session({
   secret: 'keyboardkitteh',
