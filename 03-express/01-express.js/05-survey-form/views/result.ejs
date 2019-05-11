@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/style.css">
+    <title>Survey Form</title>
+</head>
+<body>
+        <!-- httpOnly: true },
+        fullName: 'pppp',
+        dojoLocation: 'seattle',
+        favLanguage: 'js',
+        subject: 'pppp' } -->
+
+
+
+    <div class="container">
+            <p></p>
+        <div class="row">
+            <div class="col-35">
+                <p>Your Name: </p>
+            </div>
+            <div class="col-65">
+                <p><%=fullName%></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-35">
+                <p>Dojo Location:</p>
+            </div>
+            <div class="col-65">
+                <p><%=dojoLocation%></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-35">
+                <p>Favorite Language:</p>
+            </div>
+            <div class="col-65">
+                <p><%=favLanguage%></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-35">
+                <p>Comment:</p>
+            </div>
+            <div class="col-65">
+                <p><%=subject%></p>
+            </div>
+        </div>
+        <div class="row">
+            <a href="/"><button class="btn" value="Go Back">Go Back</button></a>
+        </div>
+</body>
+</html>

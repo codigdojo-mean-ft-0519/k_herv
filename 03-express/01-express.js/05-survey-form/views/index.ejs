@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/style.css">
+    <title>Survey Form</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/process" method="POST" autocomplete="off">
+            <div class="row">
+                <div class="col-35">
+                    <label for="full_name">Your Name:</label>
+                </div>
+                <div class="col-65">
+                    <input type="text" id="full_name" name="full_name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-35">
+                    <label for="dojo_location">Dojo Location:</label>
+                </div>
+                <div class="col-65">
+                    <select id="dojo_location" name="dojo_location">
+                        <option value="seattle">Seattle</option>
+                        <option value="online">Online</option>
+                        <option value="dallas">Dallas</option>
+                        <option value="mountain_view">Mountain View</option>
+                        <option value="san_jose">San Jose</option>
+                        <option value="tc">TC</option>
+                        <option value="chicago">Chicago</option>
+                        <option value="tulsa">Tulsa</option>
+                        <option value="berkeley">Berkeley</option>
+                        <option value="boise">Boise</option>
+                        <option value="oc">OC</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-35">
+                    <label for="fav_language">Favorite Language:</label>
+                </div>
+                <div class="col-65">
+                    <select id="fav_language" name="fav_language">
+                        <option value="js">Javascript</option>
+                        <option value="python">Python</option>
+                        <option value="csharp">C#</option>
+                        <option value="node">Node</option>
+                        <option value="cplusplus">C++</option>
+                        <option value="css">Java</option>
+                        <option value="css">CSS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-35">
+                    <label for="comment">Comment (optional):</label>
+                </div>
+                <div class="col-65">
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <input class="btn" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
