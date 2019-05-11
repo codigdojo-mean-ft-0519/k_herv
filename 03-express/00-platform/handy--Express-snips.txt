@@ -19,8 +19,4 @@ npm install Axios
 
 Hi it's me
 
-<<<<<<< HEAD
 ---don't forget to rebase (git pull before any commits)...commit locally, then rebase, then push
-=======
----don't forget to rebase (git pull before any commits)
->>>>>>> 301bb9021eef356b932529f76873da843b56039f
