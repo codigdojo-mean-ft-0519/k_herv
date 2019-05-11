@@ -4,17 +4,17 @@ create project folder
 create server.ps in project folder
 
 create these folders in project folder:
---views
---static
+--views: html files that look like index.ejs
+--static:  images and stylesheets
 
 npm init -y
 
 npm install express esj body-parser
 
-npm install io.socket
+npm install socket.io
 
 mpm install session
 
 Hi it's me
 
----don't forget to rebase (git pull before any commits)
+---don't forget to rebase (git pull before any commits)...commit locally, then rebase, then push
