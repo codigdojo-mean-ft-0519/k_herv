@@ -1,0 +1,42 @@
+three ways to create objects:
+
+literal
+contstructor thing that works in ES5
+and ES6 class thing
+
+Jason used the Take method (backpacks and Bob) to illustrate callbacks and such
+
+scoping including let versus const and hoisting
+
+Understanding callback:
+A function in JS is an object..a specialized object…so it can be passed around
+It is common to have function inside of another function
+
+He believes in refactoring, modularity, code reuse and small functions....the idea that any function that won't fit on the screen is too long
+
+Destructure or deconstruct
+
+JS Scroll
+
+Deck of Cards?
+
+=>  ES6 function such as
+anElementFromMap => anElementFromMap + 2))}
+
+maybe Google "Map Operations" and "reduce"
+
+Wednesday's lecture was on Callbacks
+
+Promise lecture was Thursday pm
+
+Thursday a.m. Asynch 
+all database calls are asynch
+common to pass in query and callback as with query being the database
+
+Another idea for today:  Start MondoDB with idea to think about callbacks/asynch and Promise
+
+
+
+
+
+
