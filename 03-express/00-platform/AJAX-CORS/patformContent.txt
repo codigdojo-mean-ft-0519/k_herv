@@ -1,0 +1,106 @@
+Adding AJAX and working with CORS
+Objectives:
+Review AJAX
+Include AJAX with your Express projects
+Understand Access Control Origin 
+Let's talk about AJAX again! With the assignments we have done so far with Express, we have been focusing on server-side rendering. With the help of embedded JavaScript, we are able to have our server construct HTML based on its current data. When the HTML is ready, the server sends it to the client. This is an essential piece of how the Internet works, but you may have noticed that this may lead to an unsatisfactory user experience. 
+
+When we have to render the entire HTML document that will be delivered to the client, this causes excessive refreshing of the page. Sometimes we do not want to change the entire document. For example, imagine adding a comment to a Youtube video. Should it really be necessary to rebuild the entire page's HTML just to show our comment has been added? If we were watching the video as we were posting, the refresh would cause our video to restart at the beginning! How terribly annoying!
+
+AJAX allows us to manipulate the DOM so only small pieces of the HTML have to change
+We know how to solve this excessive refresh problem. It's by using AJAX! We've done this before. Let's go through the process that we would need for the wireframe below, which gets its data from the Star Wars API:
+
+
+
+Previously, we used jQuery to make requests to an API. Therefore, we may decide to have our server send index.ejs to the client, and we could have index.ejs import jQuery and make requests to the API when the button is clicked. The code below shows one way this could be done:
+
+index.ejs
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script>
+    $(document).ready(function(){
+        $('#peopleBtn').click(function(){
+            $.get('http://swapi.co/api/people', function(data){
+                // log the data to be sure we have it before we dive into manipulating the DOM
+                console.log("got the data", data);
+            }, 'json');
+        });
+    });
+</script>
+<body>
+    <button id="peopleBtn">People</button>
+</body>
+However, what happens when we try this? Sadly, we'll see this message in our console:
+
+
+
+Cross-Origin Resource Sharing (CORS) and Access Control Origin
+The access-control-origin error is caused by a configuration setting on certain API servers, where the API provider has configured the server to control incoming requests. It allows only those from certain origin types to access the API. This means that our client-side JavaScript code cannot directly contact the API server with requests. 
+
+To bypass this, we have to make an AJAX request from our client-side page to our own server. Notice that in the code snippet below, the button click is triggering a request to the route '/people', which is a route we make on our own server. Let's have our server make the request to the API and pass back the response.
+
+index.ejs
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script>
+    $(document).ready(function(){
+        $('#peopleBtn').click(function(){
+            // let's make the request to our OWN server!
+            $.get('/people', function(data){
+                // log the data to be sure we have it before we dive into manipulating the DOM
+                console.log("got the data", data);
+            }, 'json');
+        });
+    });
+</script>
+<body>
+    <button id="peopleBtn">People</button>
+</body>
+To make requests from our server to different servers, we can use the Axios package. It is not the only option available to us, but this one is nice because it uses promises. 
+
+To use a promise, we'll need two callbacks: one if the request is successful, and another if it fails. We place these callbacks in the .then() and .catch() methods respectively, which are chained after the request.
+
+Visit the optional JavaScript Advanced chapter to learn more about promises if you haven't done so already. 
+
+To get started, use npm to install Axios, and then require it into your server.
+
+npm install axios
+
+server.js
+
+... other server code
+const axios = require('axios');
+app.get('/people', function(req, res){
+    // use the axios .get() method - provide a url and chain the .then() and .catch() methods
+    axios.get(url)
+    .then(data => {
+        // log the data before moving on! 
+        console.log(data);
+        // rather than rendering, just send back the json data!
+        res.json(data);
+    })
+    .catch(error => {
+        // log the error before moving on!
+        console.log(error);
+        res.json(error);
+    })
+});
+Arrow functions
+In the code snippet above, we are using ES6 arrow functions. They are a more concise way to write anonymous functions! Remember that anonymous functions do not have names, but they may be stored in a variable. Depending on the code within them, parentheses, curly brackets, and the return statement are not always necessary. However, it does not hurt if you choose to include them.
+
+// es5 style
+var anonES5 = function(parameter){                      
+    return parameter + 5;                                               
+}
+// arrow functions
+const anonES6 = parameter => parameter + 5;  
+// curly brackets are not required if there is only one expression
+// parentheses are not required if there is only one parameter
+// the return is implicit with just one line
+const twoParams = (parameter1, parameter2) => {   
+    parameter1 += 5;                  
+    return parameter1 + parameter2;               
+} 
+// with more parameters, parentheses are required  
+// with more lines of code, curly brackets are required                                                      
+We will be using arrow functions extensively when we work with Angular because they do not bind their own this, so the meaning of thisis more intuitive. Arrow functions use what is called thelexical this, which means this will always refer to the this of the code that contains the arrow function.
