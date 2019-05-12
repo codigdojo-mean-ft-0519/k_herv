@@ -29,7 +29,7 @@ app.get('/', function (request, response) {
   console.log("abdddd");
   console.log(Object.values(arrayPeopleObj));
   arrayJustArray=[ 'Luke Skywalker','C-3PO','R2-D2','Darth Vader','Leia Organa','Owen Lars','Beru Whitesun lars','R5-D4','Biggs Darklighter','Obi-Wan Kenobi' ];
-  response.render('index', {people: arrayJustArray}) 
+  response.render('index', {people: request.session.resultsOfPeople}) 
 });
 
 app.get('/people', function(request, res){
@@ -53,9 +53,10 @@ app.get('/people', function(request, res){
         }
         console.log("asdfasdfasdfasfsfffefeefefefe")
         console.log(resultsPeople)
-        request.session.resultsOfPeople=resultsPeople;
+        //request.session.resultsOfPeople=resultsPeople;
+        request.session.resultsOfPeople=arrayPeople;
         console.log("kkkkkkkkkkk");
-        console.log(request.session);
+        console.log(request.session.resultsOfPeople);
         console.log("arrayPeople after this");
         console.log(arrayPeople);
         console.log("is this junk before the errros");
