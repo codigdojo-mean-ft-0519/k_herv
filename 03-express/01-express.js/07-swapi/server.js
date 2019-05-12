@@ -25,16 +25,11 @@ app.get('/', function (request, response) {
   console.log('text here tests whether route was entered');
   console.log("request is now we said " + request.session.resultsOfPeople);
   console.log(request.session.resultsOfPeople)
-  response.render('index', {people:[ '{name: Luke Skywalker}',
-  '{name: C-3PO}',
-  '{name: R2-D2}',
-  '{name: Darth Vader}',
-  '{name: Leia Organa}',
-  '{name: Owen Lars}',
-  '{name: Beru Whitesun lars}',
-  '{name: R5-D4}',
-  '{name: Biggs Darklighter}',
-  '{name: Obi-Wan Kenobi}' ]});  //only one object can be passed...this is optional...remove or convert {key: value}
+  arrayPeopleObj=['{name: Luke Skywalker}','{name: C-3PO}','{name: R2-D2}','{name: Darth Vader}','{name: Leia Organa}','{name: Owen Lars}','{name: Beru Whitesun lars}','{name: R5-D4}','{name: Biggs Darklighter}','{name: Obi-Wan Kenobi}' ];  //only one object can be passed...this is optional...remove or convert {key: value}
+  console.log("abdddd");
+  console.log(Object.values(arrayPeopleObj));
+  arrayJustArray=[ 'Luke Skywalker','C-3PO','R2-D2','Darth Vader','Leia Organa','Owen Lars','Beru Whitesun lars','R5-D4','Biggs Darklighter','Obi-Wan Kenobi' ];
+  response.render('index', {people: arrayJustArray}) 
 });
 
 app.get('/people', function(request, res){
@@ -43,6 +38,7 @@ app.get('/people', function(request, res){
     axios.get("http://swapi.co/api/people")
     .then(dataNick => {
         let resultsPeople=[];
+        let arrayPeople=[];
         // log the dataNick before moving on! 
         //console.log("kent says this next is important");
         console.log("kent thinks the number of people in this pass will be:  " + dataNick.data.results.length);
@@ -53,12 +49,15 @@ app.get('/people', function(request, res){
             console.log("each name should be " + tempName);
             let tempObj = `{name: ${tempName}}`
             resultsPeople.push(tempObj)
+            arrayPeople.push(tempName);
         }
         console.log("asdfasdfasdfasfsfffefeefefefe")
         console.log(resultsPeople)
         request.session.resultsOfPeople=resultsPeople;
         console.log("kkkkkkkkkkk");
         console.log(request.session);
+        console.log("arrayPeople after this");
+        console.log(arrayPeople);
         console.log("is this junk before the errros");
         //res.json(dataNick);
     })
