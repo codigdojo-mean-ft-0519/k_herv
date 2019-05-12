@@ -7,15 +7,17 @@ create these folders in project folder:
 --views: html files that look like index.ejs
 --static:  images and stylesheets
 
-npm init -y
+npm init -y //Creates a package.json file.  ref:  https://docs.npmjs.com/cli/init.html
 
-npm install express esj body-parser
+npm install express ejs body-parser
 
 npm install socket.io
 
-mpm install session
+npm install session
 
-npm install Axios
+npm install express-session
+
+npm install axios
 
 Hi it's me
 
