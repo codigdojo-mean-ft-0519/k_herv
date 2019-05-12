@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script>
+    $(document).ready(function(){
+        $('#peopleBtn').click(function(){
+            // let's make the request to our OWN server!
+            $.get('/people', function(data){
+                // log the data to be sure we have it before we dive into manipulating the DOM
+                console.log("got the data", data);
+            }, 'json');
+        });
+    });
+</script>
+    </head>
+    
+    <body>
+    <button id="peopleBtn">People</button>
+
+    <h2>Here are all the results:</h2>
+    <for (var x in people) { 
+        <h3>Name:  people[x].name </h3>
+        <hr>
+     } 
+
+        =people[0].name
+        =people
+
+</body>

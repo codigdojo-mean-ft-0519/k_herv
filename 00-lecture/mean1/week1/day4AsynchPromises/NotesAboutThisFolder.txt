@@ -1,0 +1,5 @@
+main.js downloaded from JF's push  note there are two completely different versions of main.js.  This project uses the getthings version that goes along with orders
+
+Used along with video:  https://vimeo.com/335251085/c948b518a1
+
+this file also used in the above video:  orders.js
