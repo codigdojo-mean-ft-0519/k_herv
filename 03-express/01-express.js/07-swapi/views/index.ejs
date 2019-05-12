@@ -28,13 +28,21 @@
     <body>
     <button id="peopleBtn">People</button>
 
-    <h2>Here are all the results:</h2>
-    <for (var x in people) { 
-        <h3>Name:  people[x].name </h3>
-        <hr>
-     } 
+    <h2>Here are all the people:</h2>
+    <%=people%></h3>
 
-        =people[0].name
-        =people
+
+
+        <hr>
+
+        <% for (var x in people) { %>
+            <h3>Name: <%=x %></h3>
+            <h3>Name: <%=people[x] %></h3>
+
+            <hr>
+        <% } %>
+
+
+
 
 </body>

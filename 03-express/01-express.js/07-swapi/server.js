@@ -23,8 +23,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function (request, response) {
   console.log('text here tests whether route was entered');
-  console.log("request is now we said " + request.session.results);
-  response.render('index', {people:request.session.results});  //only one object can be passed...this is optional...remove or convert {key: value}
+  console.log("request is now we said " + request.session.resultsOfPeople);
+  console.log(request.session.resultsOfPeople)
+  response.render('index', {people:[ '{name: Luke Skywalker}',
+  '{name: C-3PO}',
+  '{name: R2-D2}',
+  '{name: Darth Vader}',
+  '{name: Leia Organa}',
+  '{name: Owen Lars}',
+  '{name: Beru Whitesun lars}',
+  '{name: R5-D4}',
+  '{name: Biggs Darklighter}',
+  '{name: Obi-Wan Kenobi}' ]});  //only one object can be passed...this is optional...remove or convert {key: value}
 });
 
 app.get('/people', function(request, res){
@@ -32,25 +42,30 @@ app.get('/people', function(request, res){
     // use the axios .get() method - provide a url and chain the .then() and .catch() methods
     axios.get("http://swapi.co/api/people")
     .then(dataNick => {
-        let results=[];
+        let resultsPeople=[];
         // log the dataNick before moving on! 
-        console.log("kent says this next is important");
+        //console.log("kent says this next is important");
         console.log("kent thinks the number of people in this pass will be:  " + dataNick.data.results.length);
         for(let i=0; i<dataNick.data.results.length; i++){
-            //console.log(dataNick.data.results[i].name  + "\n"  );
-
-            console.log(`rexxxxxxulsts is:   ${results}`);
+            console.log(dataNick.data.results[i].name  + "\n"  );
+            //console.log(`rexxxxxxulsts is:   ${results}`);
             let tempName = dataNick.data.results[i].name;
+            console.log("each name should be " + tempName);
+            let tempObj = `{name: ${tempName}}`
+            resultsPeople.push(tempObj)
         }
-        request.session.results=results;
+        console.log("asdfasdfasdfasfsfffefeefefefe")
+        console.log(resultsPeople)
+        request.session.resultsOfPeople=resultsPeople;
+        console.log("kkkkkkkkkkk");
+        console.log(request.session);
         console.log("is this junk before the errros");
-        // rather than rendering, just send back the json dataNick!
         //res.json(dataNick);
     })
     .catch(error => {
         // log the error before moving on!
         console.log(error);
-        res.json(error);
+        //res.json(error);
     })
 
 
