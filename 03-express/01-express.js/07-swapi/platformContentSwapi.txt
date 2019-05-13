@@ -1,0 +1,35 @@
+Star Wars API
+Objectives
+Gain familiarity with CORS and access control origin
+Make requests to an API from the server
+Make recursive API calls
+
+
+
+Use the Star Wars API to gather information about the people and planets of Star Wars based on what the user requests. Upon first visiting the web page, the user should see two buttons - one to receive information about people, one to receive information about planets.
+
+Remember that we should not refresh the entire page. Instead of rendering a new page, have your server respond with JSON by using res.json(). The client should use the JSON data to manipulate the DOM, which means only a portion of the page needs to be updated.
+
+You will notice that the API gives data in chunks. For example, making a request to https://swapi.co/api/people will respond with an object with an array that contains only ten people. The count attribute, however, tells us that there are 87 people we could access. We need to follow the url provided in the next attribute to get the next ten.
+
+This assignment asks you to provide links that allow the user to fetch the next ten or previous ten results. Additionally, provide a link that fetches all the people or all the planets! This will require recursion. Notice that this will take a while to load. The intention is to give you experience with recursion and response times so that you may make wise choices about user experience in the future.
+
+{
+    "count": 87,
+    "next": "https://swapi.co/api/people/?page=2",
+    "previous": null,
+    "results": [
+        {
+            "name": "Luke Skywalker",
+            "height": "172",
+            ....
+         } ..... // and 9 more people objects
+      ],
+}
+
+
+BONUS:  Rather than providing links to get the next or previous ten items, place a scroll bar to look at the list of fetched items. When the scroll bar hits the bottom of the list, make an API call to fetch the next ten and append them to the list.
+
+ Create an application where users may click a button to fetch data from the Star Wars API
+ Once the user fetches data, provide links to fetch the next data or the previous data, if it exists
+ Provide a link to fetch all the data about the people or the planets at once
