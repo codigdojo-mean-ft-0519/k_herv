@@ -24,3 +24,32 @@ npm install mongoose
 Hi it's me
 
 ---don't forget to rebase (git pull before any commits)...commit locally, then rebase, then push
+
+from the mongoose section of platfrom:
+Use express flash - npm install --save express-flash - to display your errors. In order to use express flash messages, you must have session.
+
+-----
+users in and users out:
+
+        app.get("/users", function (request, response){
+            // hard-coded user data
+            var users_array = [
+                {name: "Michael", email: "michael@codingdojo.com"}, 
+                {name: "Jay", email: "jay@codingdojo.com"}, 
+                {name: "Brendan", email: "brendan@codingdojo.com"}, 
+                {name: "Andrew", email: "andrew@codingdojo.com"}
+            ];
+            response.render('users', {users: users_array});
+        })
+-----------------------------
+        <html>
+        <body>
+            <h2>Here are all the users:</h2>
+            <% for (var x in users) { %>
+                <h3>Name: <%= users[x].name %></h3>
+                <h4>Email: <%= users[x].email %></h4>
+                <hr>
+            <% } %>
+        </body>
+        </html>
+
