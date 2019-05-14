@@ -53,3 +53,13 @@ users in and users out:
         </body>
         </html>
 
+
+==============
+        //.then(users => response.render('index', {users: users }))
+            //also works as:
+        //.then(function(users) { 
+            console.log("asd");
+            // console.log(users);
+            
+            // response.render('index', {users: users }) })
+
