@@ -7,11 +7,11 @@ Create students collection.
 >>>db.createCollection("students")
 Each document you insert into this collection should have the following format: ({name: STRING, home_state: STRING, lucky_number: NUMBER, birthday: {month: NUMBER, day: NUMBER, year: NUMBER}})
 Create 5 students with the appropriate info.
->>>db.students.insert({name: "Mark", home_state: "TX", lucky_number: 22, birthday: {month: 5, day: 3, year, 1995}})
->>>db.students.insert({name: "Kim", home_state: "KY", lucky_number: 33, birthday: {month: 5, day: 6, year, 1995}})
->>>db.students.insert({name: "Larry", home_state: "CA", lucky_number: 44, birthday: {month: 6, day: 11, year, 2000}})
->>>db.students.insert({name: "Lisa", home_state: "KY", lucky_number: 8, birthday: {month: 6, day: 22, year, 1990}})
->>>db.students.insert({name: "Mary", home_state: "TX", lucky_number: 28, birthday: {month: 6, day: 17, year, 1985}})
+>>>db.students.insert({name: "Mark", home_state: "TX", lucky_number: 22, birthday: {month: 5, day: 3, year: 1995}})
+>>>db.students.insert({name: "Kim", home_state: "KY", lucky_number: 33, birthday: {month: 5, day: 6, year: 1995}})
+>>>db.students.insert({name: "Larry", home_state: "CA", lucky_number: 44, birthday: {month: 6, day: 11, year: 2000}})
+>>>db.students.insert({name: "Lisa", home_state: "KY", lucky_number: 8, birthday: {month: 6, day: 22, year: 1990}})
+>>>db.students.insert({name: "Mary", home_state: "TX", lucky_number: 28, birthday: {month: 6, day: 17, year: 1985}})
 
 Get all students.
 >>>db.students.find().pretty()
@@ -19,13 +19,15 @@ Retrieve all students who are from California (San Jose Dojo) or Washington (Sea
 >>>db.students.find( { $or: [ { home_state: "CA" }, { home_state: "WA" } ] } )
 Get all students whose lucky number is:
 greater than 3
->>>db.students.find( { { lucky_number: { $gt: 3 } } )
+>>>db.students.find(  { lucky_number: { $gt: 3 } } )
 less than or equal to 10
->>>db.students.find( { { lucky_number: { $lte: 10 } } )
+>>>db.students.find( {  lucky_number: { $lte: 10 } } )
 between 1 and 9 (inclusive)
->>>db.students.find( { { $and: [ { lucky_number: { $gte: 1 } }, { lucky_number: { $lte: 9 }} ] } )
+>>>db.students.find(  { $and: [ { lucky_number: { $gte: 1 } }, { lucky_number: { $lte: 9 }} ] } )
 Add a field to each student collection called 'interests' that is an ARRAY.  It should contain the following entries: 'coding', 'brunch', 'MongoDB'. Do this in ONE operation.
 >>>
+    db.students.updateMany({ }, $set: {interests: ['coding', 'brunch', 'MongoDB']});
+
 Add some unique interests for each particular student into each of their interest arrays.
 Add the interest 'taxes' into someone's interest array.
 Remove the 'taxes' interest you just added.
