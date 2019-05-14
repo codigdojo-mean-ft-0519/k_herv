@@ -18,9 +18,37 @@
             // let's make the request to our OWN server!
             $.get('/people', function(data){
                 // log the data to be sure we have it before we dive into manipulating the DOM
-                console.log("got the data", data);
+                let outputString=""
+                console.log("got the data", data[0]);
+                for (let onePerson of data){
+                    outputString = outputString + "<p>" + onePerson + "</p>"
+                }
+                document.getElementById("output").innerHTML = outputString;
             }, 'json');
         });
+
+
+        $('#planetBtn').click(function(){
+            // let's make the request to our OWN server!
+            $.get('/people', function(data){
+                // log the data to be sure we have it before we dive into manipulating the DOM
+                let outputString=""
+                console.log("got the data", data[0]);
+                for (let onePerson of data){
+                    outputString = outputString + "<p>" + onePerson + "</p>"
+                }
+                document.getElementById("output").innerHTML = outputString;
+            }, 'json');
+        });
+
+
+
+
+
+
+
+
+
     });
 </script>
     </head>
@@ -29,12 +57,11 @@
     <button id="peopleBtn">People</button>
 
     <h2>Here are all the people:</h2>
-        <% for (var x in people) { %>
-            <h3>Record Number: <%=x %></h3>
-            <h3>Name: <%=people[x] %></h3>
-            <hr>
-        <% } %>
 
+
+    <div id="output">
+        before DOM manipulation
+       </div>
 
 
 
