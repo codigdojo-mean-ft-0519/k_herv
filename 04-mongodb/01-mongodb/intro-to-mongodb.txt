@@ -60,3 +60,6 @@ Remove the 'lucky_number' field.
 >>>db.students.update( { }, { $unset: { lucky_number: "" } } ,{multi:true})
 Add a 'updated_on' field, and set the value as the current date.
 >>>db.students.update({}, {$currentDate:{updated_on:true}},{multi:true})
+
+reference, this also worked for us in later project:
+db.users.remove({"_id": ObjectId("5cdacd1c92d28260cc0bf6f7")});
