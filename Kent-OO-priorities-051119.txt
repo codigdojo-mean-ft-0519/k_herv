@@ -31,9 +31,12 @@ Promise lecture was Thursday pm
 
 Thursday a.m. Asynch 
 all database calls are asynch
+---Express much more important than Node direct server work
 common to pass in query and callback as with query being the database
+--done is JQuerries way of handling promises
 
 Another idea for today:  Start MondoDB with idea to think about callbacks/asynch and Promise
+
 
 
 
