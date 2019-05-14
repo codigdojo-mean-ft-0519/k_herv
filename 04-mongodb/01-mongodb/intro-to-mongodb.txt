@@ -25,17 +25,38 @@ less than or equal to 10
 between 1 and 9 (inclusive)
 >>>db.students.find(  { $and: [ { lucky_number: { $gte: 1 } }, { lucky_number: { $lte: 9 }} ] } )
 Add a field to each student collection called 'interests' that is an ARRAY.  It should contain the following entries: 'coding', 'brunch', 'MongoDB'. Do this in ONE operation.
->>>
-    db.students.updateMany({ }, $set: {interests: ['coding', 'brunch', 'MongoDB']});
+>>>db.students.update({},{$set: {"interests":['coding', 'brunch', 'MongoDB']}},{multi:true})
 
 Add some unique interests for each particular student into each of their interest arrays.
+Mark:  stamp collecting
+Kim:  tree climbing
+Larry:  beekeeping
+Lisa:  flying
+Mary:  pushing
+>>>db.students.update({name: "Mark"}, {$push: {interests: 'stamp collecting'}})
+>>>db.students.update({name: "Kim"}, {$push: {interests: 'tree climbing'}})
+>>>db.students.update({name: "Larry"}, {$push: {interests: 'beekeeping'}})
+>>>db.students.update({name: "Lisa"}, {$push: {interests: 'flying'}})
+>>>db.students.update({name: "Mary"}, {$push: {interests: 'pushing'}})
+
 Add the interest 'taxes' into someone's interest array.
+>>>db.students.update({name: "Mark"}, {$push: {interests: 'taxes'}})
+
 Remove the 'taxes' interest you just added.
+>>>db.students.update({name: "Mark"}, {$pull: {interests: 'taxes'}})
 Remove all students who are from California.
+>>>db.students.remove({home_state: "CA"})
 Remove a student by name. 
+>>>db.students.remove({name: "Mark"})
 Remove a student whose lucky number is greater than 5 (JUST ONE)
+>>>db.students.remove({lucky_number: {$gt: 5}}, true)
 Add a field to each student collection called 'number_of_belts' and set it to 0.
+>>>db.students.update({}, {$set: {number_of_belts: 0}}, {multi:true})
 Increment this field by 1 for all students in Washington (Seattle Dojo).
+>>>db.students.update({home_state: "WA"}, {$inc: {number_of_belts: 1}}, {multi:true})
 Rename the 'number_of_belts' field to 'belts_earned'
+>>>db.students.update( { }, { $rename: { 'number_of_belts': 'belts_earned'} },{multi:true} )
 Remove the 'lucky_number' field.
+>>>db.students.update( { }, { $unset: { lucky_number: "" } } ,{multi:true})
 Add a 'updated_on' field, and set the value as the current date.
+>>>db.students.update({}, {$currentDate:{updated_on:true}},{multi:true})
