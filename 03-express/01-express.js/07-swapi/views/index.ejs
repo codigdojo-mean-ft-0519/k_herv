@@ -30,7 +30,7 @@
 
         $('#planetBtn').click(function(){
             // let's make the request to our OWN server!
-            $.get('/people', function(data){
+            $.get('/planets', function(data){
                 // log the data to be sure we have it before we dive into manipulating the DOM
                 let outputString=""
                 console.log("got the data", data[0]);
