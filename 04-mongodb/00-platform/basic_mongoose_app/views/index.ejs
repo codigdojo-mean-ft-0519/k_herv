@@ -25,12 +25,29 @@
 
             </fieldset>
 
-            <h2>Here are all the users:</h2>
+
+
+
+
+            <h2>Showing Jessica:</h2>
             <% for (var x in users) { %>
                 <h3>Name: <%= users[x].name %></h3>
                 <h4>Age: <%= users[x].age %></h4>
                 <hr>
             <% } %>
+
+
+            <fieldset>
+                <form action='/delete' method='GET'>
+
+                    <input type='submit' value='Delete Clark'>
+                </form>
+
+
+            </fieldset>
+
+
+
 
         </div>
 
