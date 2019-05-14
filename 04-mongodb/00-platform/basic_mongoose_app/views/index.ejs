@@ -30,21 +30,26 @@
 
 
             <h2>Showing Jessica:</h2>
-            <% for (var x in users) { %>
-                <h3>Name: <%= users[x].name %></h3>
-                <h4>Age: <%= users[x].age %></h4>
+            <% for (const user of users) { %>
+                <h3>Name: <%= user.name %></h3>
+                <h4>Age: <%= user.age %></h4>
+                <div>
+                <fieldset>
+                    <form action='/people/<%= user._id %>/delete' method='POST'>
+
+                    <input type='submit' value='Delete '>
+                    </form>
+
+
+                </fieldset>
+
+
+                </div>
                 <hr>
             <% } %>
 
 
-            <fieldset>
-                <form action='/delete' method='GET'>
 
-                    <input type='submit' value='Delete Clark'>
-                </form>
-
-
-            </fieldset>
 
 
 

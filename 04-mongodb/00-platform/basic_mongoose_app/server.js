@@ -50,14 +50,27 @@ var User = mongoose.model('User') // We are retrieving this Schema from our Mode
    // User.remove({_id: 'insert record unique id here'}, function(err){
 app.get("/", function (request, response) {
     User.find()
-        .then(function(users) { 
-            console.log("asd");
-            console.log(users);
+    .then(users => {
+        console.log(users)
+        response.render('index', {users: users })
+    })
+
+    // .then(users => {
+    //     response.render('index', {users: users })
+    
+    
+    // })
+
+
+
+
+        // .then(function(users) { 
+        //     console.log("asd");
+        //     console.log(users);
             
-            response.render('index', {users: users }) })
+        //     response.render('index', {users: users }) })
 
 
-        //.then(users => response.render('index', {users: users }))
             //also works as:
             //.then(function(users) { 
              //   console.log("asd");
@@ -75,7 +88,7 @@ app.get("/", function (request, response) {
       // Keep in mind that everything you want to do AFTER you get the users from the database must
       //   happen inside of this callback for it to be synchronous 
       // Make sure you handle the case when there is an error, as well as the case when there is no error
-      .catch(console.log());
+      .catch(console.log);  //this will just print the error in the terminal
     })
 
     //dummyArray=[{name: "bob, age: 45"}, {name:"fred", age: 33}];
@@ -102,18 +115,22 @@ app.post('/users', function(request, response) {
     })
 })
 
-
+ //   /people/:id
+ //   /people/:id/delete
 //User.remove({_id: 'insert record unique id here'}, function(err){
-app.get("/delete", function (request, response) {
-    User.remove({name: "Clark"})
-        .then(function(users) { 
+app.post("/people/:id/delete", function (request, response) {  //delete should not be a get request...browsers will pre-fetch, so may delete something even i the users did not intend to do so
+    const id =request.params.id //id points to the /:id/
+    User.findByIdAndRemove(id)
+        .then(function(user) { 
             console.log("asd");
-            console.log(users);
+            console.log(user);
+            response.redirect('/' )} 
             
-            response.redirect('/' )} )
+            
+        )
 
 
-      .catch(console.log())
+        .catch(console.log())
     })
 
 
@@ -122,8 +139,9 @@ app.listen(port, () => console.log(`express server listening on port ${port}`));
 
 
 
-
-
+//const id =request.param.id //id points to the /:id/
+//User.remove({_id: id})
+//to remove a singular thing, there is a better way
 
 
 
