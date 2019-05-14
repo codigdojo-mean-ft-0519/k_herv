@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Basic Mongoose App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div id="container">
+            Some starter content in here
+
+            <fieldset>
+                <form action='/users' method='post'>
+                    Name: <input type='text' name='name'>
+                    Age: <input type='text' name='age'>
+                    <input type='submit' value='create user'>
+                </form>
+
+
+            </fieldset>
+
+            <h2>Here are all the users:</h2>
+            <% for (var x in users) { %>
+                <h3>Name: <%= users[x].name %></h3>
+                <h4>Email: <%= users[x].email %></h4>
+                <hr>
+            <% } %>
+
+        </div>
+
+    </body>
+</html>
