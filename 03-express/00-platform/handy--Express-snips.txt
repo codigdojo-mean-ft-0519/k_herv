@@ -19,6 +19,8 @@ npm install express-session
 
 npm install axios
 
+npm install mongoose
+
 Hi it's me
 
 ---don't forget to rebase (git pull before any commits)...commit locally, then rebase, then push
