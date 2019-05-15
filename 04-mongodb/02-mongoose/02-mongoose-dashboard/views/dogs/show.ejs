@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles.css">
+    <title><%=dog[0].name %></title>
+</head>
+<body>
+    <h1>Meet <%= dog[0].name %>!</h1>
+    <p><%= dog[0].name %> is <%= dog[0].age %> year(s) old and is a <%=dog[0].breed %>.</p>
+    <a href="/"><button>View All Dogs</button></a>
+    <a href="/dogs/new"><button>Add a new dog</button></a>
+    <a href="/dogs/destroy/<%=dog[0]._id%>"><button>Delete this dog :( </button></a>
+    <a href="/dogs/edit/<%=dog[0]._id%>"><button>Update this dog</button></a>
+</body>
+</html>

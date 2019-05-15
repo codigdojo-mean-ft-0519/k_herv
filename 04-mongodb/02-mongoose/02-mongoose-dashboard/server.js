@@ -1,105 +1,100 @@
-//Mongoose Dashboard
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const bodyParser = require("body-parser");
+const mongoose = require('mongoose'); 
 const express = require('express');
 const path = require('path');
-
-// const port = process.env.PORT || 8000;
-// const { PORT: port = 8000 } = process.env;
 const { env: { PORT: port = 8000 } } = process;
 const { Schema } = mongoose;
 const app = express();
 
-//If using static files (i.e. css)...
 app.use(express.static(__dirname+ "/static"));
-//If using images…
 
-app.use(express.static(__dirname + "/static/images"));
-//This allows us to see and interpret ejs files, which allow us to render dynamic data within an html page
-
-//app.set denotes our express settings
 app.set('view engine', 'ejs');
-//This allow us to access the files within our views folder
 app.set('views', path.join(__dirname, 'views'));
-//This allows us to pass text as URL encoded data and exposes the resulting object (containing the keys and values) on request.body.
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// This is how we connect to the mongodb database using mongoose -- "dashboard" is the name of
-//   our db in mongodb -- this should match the name of the db you are going to use for your project.
-mongoose.connect('mongodb://localhost/wolve_dashboard'); //dashboard is the name of the database we will pick
+mongoose.connect("mongodb://localhost/dogs_db", { useNewUrlParser: true });
+mongoose.connection.on("connected", () => console.log("Connected to Mongo!"));
 
-var WolfSchema = new Schema({
-    name: {
+//create dog blueprint
+const DogSchema = new Schema({
+    name:{
         type: String,
-        required: [true, 'Name is required'],
-        minlength: 2,
-        maxlength: 45,
-        trim: true,
+        required: [true, "Please enter in a name for your dog."]
     },
-    quote: {
+    breed:{
         type: String,
-        required: [true, "Please enter a quote"],
-        minlength:2,
-        maxlength: 225,
-        trim:true,
+        required: [true, "Breed is required"],
+    },
+    age: {
+        type: Number,
+        required: true,
+        min: [0, "Dogs can't be negative ages"],
+        max: [13, "Dogs can't live longer than 3 years"],
     }
-},{timestamps: true}
-);
+});
 
-const Wolf = mongoose.model("wolf",WolfSchema); //We are retrieving this Schema from our Models, named 'Dashboard'
+const Dog = mongoose.model("Dog",DogSchema);
 
-//Routes start here:
+//ROUTING STARTS HERE
 
+//Displays all the dogs
+app.get("/", function (request, response) {
+    Dog.find({})
+        .then(dogs => response.render("index", { dogs: dogs }))
+        .catch(console.log);
+});
 
+app.post("/dogs", function(request, response){
+    Dog.create(request.body)
+        .then(dog => {
+            console.log(dog);
+            response.redirect("/");
+        })
+        .catch(console.log);
+});
 
-//GET '/' Displays all of the wolves.   renders index.ejs
+//Displays info about one dog
+app.get("/dogs/new", function (request, response) {
+    response.render("dogs/index");
+});
 
+//Displays info about one dog
+app.get("/dogs/:id", function (request, response) {
+    Dog.find({ _id: request.params.id })
+        .then(dog => {
+            console.log(dog);
+            response.render("dogs/show", {dog: dog});
+        })
+        .catch(console.log);
+});
 
+//Should show a form to edit an existing mongoose
+app.get("/dogs/edit/:id", function(request,response){
+    Dog.find({ _id: request.params.id })
+        .then(dog => {
+            console.log(dog);
+            response.render("dogs/edit", {dog: dog });
+        })
+        .catch(console.log);
+});
 
-//GET '/wolves/:id' Displays information about one wolf.  renders show.ejs
+//Should be the action attribute for the form in the above route
+app.post("/dogs/:id", function(request, response){
+    Dog.update({ _id: request.params.id }, {name: request.body.name}, {breed: request.body.breed}, {age: request.body.age})
+        .then(dog => {
+            console.log(dog);
+            response.redirect("/");
+        })
+        .catch(console.log);
+});
 
+//Should delete the mongoose from the database by ID
+app.get("/dogs/destroy/:id", function(request,response){
+    Dog.remove({ _id: request.params.id})
+        .then(dog => {
+            response.redirect("/");
+        })
+        .catch(console.log);
+});
 
-
-//GET '/wolves/new' Displays a form for making a new wolf. renders new.ejs
-
-
-//POST '/wolves' Should be the action attribute for the form in the above route (GET '/wolves/new').
-
-
-//GET '/wolves/edit/:id' Should show a form to edit an existing wolf. renders edit.ejs
-
-
-//POST '/wolves/:id' Should be the action attribute for the form in the above route (GET '/wolves/edit/:id').
-
-
-//POST '/wolves/destroy/:id' Should delete the wolf from the database by ID.  button on some other rendered page
-
-app.post("/people/:id/delete", function (request, response) {  //delete should not be a get request...browsers will pre-fetch, so may delete something even i the users did not intend to do so
-    const id =request.params.id //id points to the /:id/
-    User.findByIdAndRemove(id)
-        .then(function(user) { 
-            console.log("asd");
-            console.log(user);
-            response.redirect('/' )} 
-            
-            
-        )
-
-
-        .catch(console.log())
-    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.listen(port, () => console.log(`express server listening on port ${port}`));
