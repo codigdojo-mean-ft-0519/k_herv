@@ -16,17 +16,12 @@
 
             Some initial content
 
-            <h2>Here are the qwesome quotes!</h2>
+            <h2>Here are the awesome quotes!</h2>
             <% for (var quote  of quotes) { %>
-                <h3> <%= quote.quotation %></h3>
-                <h4>    -----: <%= quote.name %> at <%= quote.createdat %>  </h4>
+                <h3> <%= quote.quote %></h3>
+                <h4>    -----: <%= quote.name %> at <%= quote.createdAt %>  </h4>
                 <hr>
             <% } %>
-
-
-
-
-
         </div>
     </body>
 </html>

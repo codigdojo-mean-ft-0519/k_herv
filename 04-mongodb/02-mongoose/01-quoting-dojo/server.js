@@ -37,58 +37,52 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   our db in mongodb -- this should match the name of the db you are going to use for your project.
 mongoose.connect('mongodb://localhost/basic_mongoose'); //basic_mongoose is the name of the database we will pick
 
-var QuoteSchema = new mongoose.Schema({
-    name: String,
-    quotation: String,
-    createdat: String
-   })
 
-mongoose.model('Quote', QuoteSchema); // We are setting this Schema in our Models as 'Quotes'
-var Quote = mongoose.model('Quote') // We are retrieving this Schema from our Models, named 'Quotes'
+var QuoteSchema = new Schema({
+    name: {
+        type: String,
+        required: [true, 'Name is required'],
+        minlength: 2,
+        maxlength: 45,
+        trim: true,
+    },
+    quote: {
+        type: String,
+        required: [true, "Please enter a quote"],
+        minlength:2,
+        maxlength: 225,
+        trim:true,
+    }
+},{timestamps: true}
+);
 
-
+const Quote = mongoose.model("Quote",QuoteSchema); //We are retrieving this Schema from our Models, named 'Quote'
 
 //the Routes
 
-
-
-
 //GET `/` => render welcome page  start here 
 app.get("/", function (request, response) {
-    Quote.find()
-        .then(function(quotes) { 
-            console.log("asd");
-            console.log(quotes);
-            response.render('welcome') }) //, {quotes: quotes }
-      .catch(console.log());
+
+      response.render('welcome')  //, {quotes: quotes }
     })
+
 
 //POST `/quotes` => create a quote...comes from the add my quote button on the welcome page...when complete redirect to the page that goes to welcome
 app.post('/quotes', function(request, response) {
-    console.log("next line is console log post requst.body")
-    console.log("POST DATA", request.body);
-    // This is where we would add the user from request.body to the database.
-    var user = new User({name: request.body.name, age: request.body.age});
-    // Try to save that new user to the database (this is the method that actually inserts into the db) and run a callback function with an error (if any) from the operation.
-    user.save(function(err) {
-        // if there is an error console.log that something went wrong!
-        if(err) {
-            console.log('something went wrong');
-        } else { // else console.log that we did well and then redirect to the root route
-            console.log('successfully added a user!');
-        }
-        response.redirect('/quotes');
+    Quote.create(request.body)
+    .then(quote =>{
+        console.log("output", quote);
+        response.redirect('/quotes');  //redirects won't do a post target
     })
 })
  
 
 //GET `/quotes` => render quotes page  ...shows up from skip to quotes button on the welcome page
-app.get("/quotes", function (request, response) {
-
-            
-        response.render('quotes')  //, {quotes: quotes }) }
-
-    })
+app.get("/quotes", function(request,response){
+    Quote.find({})
+        .then(quotes => response.render("quotes", {quotes: quotes}))
+        .catch(console.log);
+});
 
 
 // listening for incoming connection on port
