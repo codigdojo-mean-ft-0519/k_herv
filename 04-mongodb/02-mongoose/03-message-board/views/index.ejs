@@ -14,16 +14,41 @@
         </h1>
         <hr>
         <fieldset>Create New Message
-                <form action='/newMessage' method='POST'>
+                <form action='/createmessage' method='POST'>
                     Your Name: <input type='text' name='name'>
-                    Message: <input type='text' name='quote'>
+                    Message: <input type='text' name='messagecontent'>
                     <input type='submit' value='Post Message'>
+                </form>
             </fieldset>
 
+        <div>
+            <% for (const message  of messages) { %>
+                <hr>    
+                <p><%=message._id %></p>
+                <h3> Name: <%= message.name %></h3>
+                <h4> Message:  <%= message.messagecontent %></h4>
 
+           
+                Previous Comenters with their names
+                <% for (const comment of message.comments ) { %>
+                <p>Name:  <%=comment.name%></p>
+                <p>Comment:  <%=comment.commentcontent%></p>
+                
+                <% } %>
 
+                <p></p>
 
+                <form action='/createcomment/<%=message._id %>' method="POST" autocomplete="off">
+                    <label for="">Comment Creation</label><br>
+                    Your Name: <input type='text' name='name'>
+                    <input type="hidden" name="messagecontent_id" value="<%=message._id %>">
+                    Message: <input type='text' name='commentcontent'>
+                    <input type='submit' value='Post comment'>
+                </form>
 
+            <% } %>
+        </div>
+            END EJS Loop of all messages in database 
     </div>
 
 
