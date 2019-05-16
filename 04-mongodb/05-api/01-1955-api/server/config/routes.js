@@ -10,7 +10,7 @@ module.exports = function(app){
 
     //One persons info
     app.get("/:name", function (request,response){
-        PersonController.show(request.response)
+        PersonController.show(request,response)
     })
 
     app.get("/new/:name", function (request,response){
