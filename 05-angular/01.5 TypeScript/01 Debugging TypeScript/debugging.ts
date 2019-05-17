@@ -117,5 +117,5 @@ setTimeout(function(){
   }, 2000)
 // Why didn't babar's age change? Fix this by using an arrow function in the Elephant class.
 
-//Question: I am not good at arrow functions, but used this website and got #7 to increment as requested.
+//Question: I am not good at arrow functions, but used this website  https://basarat.gitbooks.io/typescript/docs/arrow-functions.htmland got #7 to increment as requested.
 //But how/why?

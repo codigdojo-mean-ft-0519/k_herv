@@ -7,7 +7,7 @@ import { PokemonService } from './pokemon.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'pokemon';
+  title = 'pokemon for all';
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
