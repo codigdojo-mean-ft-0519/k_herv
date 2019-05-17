@@ -1,0 +1,23 @@
+//model name will be that preceeding .models.js in file name of file under models under server
+
+//text before controller.js in file name is model/collection/field name
+
+controller.js file needs completing
+
+
+
+//GET: Retrieve all Tasks
+//GET: Retrieve a Task by ID
+//POST: Create a Task
+//PUT: Update a Task by ID
+//DELETE: Delete a Task by ID
+
+
+
+
+
+
+
+
+
+
