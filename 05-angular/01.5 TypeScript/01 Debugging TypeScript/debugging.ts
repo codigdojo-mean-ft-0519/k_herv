@@ -103,19 +103,19 @@ function doMath() { Number //KH:  Made function and gave it a return type so it 
 }
 
 //7. Arrow functions and 'this'
+
 class Elephant {
-   constructor(public age: number){}
-   birthday = function(){
-      this.age++;
-   }
+  constructor(public age: number){}
+  birthday =() =>{  //KH:  now has arrow function, and age increments
+     this.age++;
+  }
 }
 const babar = new Elephant(8);
 setTimeout(babar.birthday, 1000)
 setTimeout(function(){
-   console.log(`Babar's age is ${babar.age}.`)
-   }, 2000)
+  console.log(`Babar's age is ${babar.age}.`)
+  }, 2000)
 // Why didn't babar's age change? Fix this by using an arrow function in the Elephant class.
 
-
-
-
+//Question: I am not good at arrow functions, but used this website and got #7 to increment as requested.
+//But how/why?
