@@ -16,7 +16,7 @@ mongoose.connect("mongodb://localhost/dogs_db", { useNewUrlParser: true });
 mongoose.connection.on("connected", () => console.log("Connected to Mongo!"));
 
 //create dog blueprint
-const DogSchema = new Schema({
+const DogSchema = new Schema({ //platform uses new mongoose.Schema, but we have const { Schema } = mongoose;
     name:{
         type: String,
         required: [true, "Please enter in a name for your dog."]
@@ -29,7 +29,7 @@ const DogSchema = new Schema({
         type: Number,
         required: true,
         min: [0, "Dogs can't be negative ages"],
-        max: [13, "Dogs can't live longer than 3 years"],
+        max: [23, "Dogs don't live longer than 23 years"],
     }
 });
 
@@ -44,8 +44,15 @@ app.get("/", function (request, response) {
         .catch(console.log);
 });
 
+//GET '/dogs/new' Displays a form for making a new mongoose.
+app.get("/dogs/new", function (request, response) {
+    console.log("tester")
+    response.render("dogs/new");
+});
+
 //Displays info about one dog..per id submitted from links such as that in index.ejs
 app.get("/dogs/:id", function (request, response) {
+        console.log("here")
     Dog.find({ _id: request.params.id })
         .then(dog => {
             console.log(dog);
@@ -55,15 +62,13 @@ app.get("/dogs/:id", function (request, response) {
 });
 
 
-//GET '/dogs/new' Displays a form for making a new mongoose.
-app.get("/dogs/new", function (request, response) {
-    response.render("dogs/new");
-});
+
 
 //POST '/dogs' Should be the action attribute for the form in the above route (GET '/dogs/new')...comes from dogs/new.ejs
 app.post("/dogs", function(request, response){
     Dog.create(request.body)
         .then(dog => {
+            console.log("dogs from make new dog")
             console.log(dog);
             response.redirect("/");
         })
@@ -73,7 +78,8 @@ app.post("/dogs", function(request, response){
 
 //Should show a form to edit an existing mongoose...from form in index.ejs
 app.get("/dogs/edit/:id", function(request,response){
-    Dog.find({ _id: request.params.id })
+    console.log("edit place");
+    Dog.findById( request.params.id )
         .then(dog => {
             console.log(dog);
             response.render("dogs/edit", {dog: dog });
@@ -83,7 +89,8 @@ app.get("/dogs/edit/:id", function(request,response){
 
 //Should be the action attribute for the form in the above route...updates single dog after dogs/edit.ejs submits form
 app.post("/dogs/:id", function(request, response){
-    Dog.update({ _id: request.params.id }, {name: request.body.name}, {breed: request.body.breed}, {age: request.body.age})
+    console.log("UPDATING DOGS", request.body, request.params)
+    Dog.update({ _id: request.params.id }, {name: request.body.name, breed: request.body.breed, age: request.body.age} )
         .then(dog => {
             console.log(dog);
             response.redirect("/");

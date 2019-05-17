@@ -8,6 +8,10 @@
 # dependencies
 /node_modules
 
+# KH extras
+/bu02-mongoose-dashboard
+/bu02-mongoose-dashboard/
+
 # IDEs and editors
 /.idea
 .project

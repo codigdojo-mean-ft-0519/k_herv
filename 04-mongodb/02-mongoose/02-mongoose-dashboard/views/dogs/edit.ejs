@@ -11,9 +11,9 @@
     <div class="container">
             <form action="/dogs/<%=dog._id %>" method="POST" autocomplete="off">
                 <fieldset>
-                    <legend>Edit <%=dog[0].name %>:</legend>
+                    <legend>Edit <%=dog.name %>:</legend>
                     Name:<br>
-                    <input type="text" name="name" value="<%=dog[0].name %>">
+                    <input type="text" name="name" value="<%=dog.name %>">
                     <br>
                     Breed:<br>
                     <select name="breed">
