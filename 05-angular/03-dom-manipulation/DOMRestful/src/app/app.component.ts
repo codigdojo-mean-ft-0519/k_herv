@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 //Implement OnInit
 import { discardPeriodicTasks } from '@angular/core/testing';
 import { HttpService } from './http.service';
+import { Task } from './task'; //added with Wes
+import { Observable } from 'rxjs'; //added with Wes
 
 @Component({
   selector: 'app-root',
@@ -11,12 +13,12 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
   constructor(private _httpService: HttpService) {}
   title = 'Restful Tasks API';
-  //tasks = [];
-  tasks = [
-    { title: 'mow', description: '20 acres' },
-    { title: 'cut', description: 'all trees' },
-    { title: 'sweep', description: 'half walk' },
-  ];
+  tasks: Task[]; //added with Wes...fixed red squiggles, but a lot more had to happen before that
+  // tasks = [
+  //   { title: 'mow', description: '20 acres' },
+  //   { title: 'cut', description: 'all trees' },
+  //   { title: 'sweep', description: 'half walk' },
+  // ];
   second = 'All the tasks:';
   third = 'The third task:';
   // ngOnInit will run when the component is initialized, after the construcor method
@@ -24,10 +26,16 @@ export class AppComponent implements OnInit {
     this.getTasksFromService();
   }
   getTasksFromService() {
-    let observable = this._httpService.getTasks();
+    let observable: Observable<Task[]> = this._httpService.getTasks(); //added typ of observable with Wes
     observable.subscribe(data => {
       console.log('Got our tasks!', data);
-      // this.tasks = data['/tasks'];
+      this.tasks = data;
+      // let dummyObJOfArray = `{'tasks': ${data}}`;
+      // console.log(dummyObJOfArray);
+      // console.log(Object.values(dummyObJOfArray));
+      // this.tasks = data[dummyObJOfArray['tasks']];
+      // var obj = { foo: 'bar', baz: 42 };
+      // console.log(Object.values(obj)); // ['bar', 42]
     });
   }
 }

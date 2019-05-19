@@ -29,6 +29,14 @@ I completed all those steps circa 0200 051919 and the output should reflect the 
       // this.tasks = data['/tasks'];  .....tried various things to get data assigned to tasks on right side of =
 Because when giving tasks above  tasks = [...   a dummy array of objects, it outputs on the web page fine, but in the above could not get it to working
 
+Working with Wes...
+This was correct:  this.tasks = data;..I believe I had tried it, but either something else was going on, or the red squiggles under this.tasks caused me to move on.  Turns out those were just Linting errros
+
+To solve the linting errors, made a task class by using ng generate class task--this added files task.ts (this file received some enhancements) and task.spec.ts--..added several more things in files such as app.component.html, app.component.ts, http.service.ts...look for comments in these files.  This was about creating a class so we could type this.tasks to stop red squiggles.
+
+still had red squiggles, but then open and close app.component.ts solved
+
+Still had errors in console related to displaying third item in list...which were happening because something was trying to display before existing...solution:  div *ngIf="tasks">
 
 
 
