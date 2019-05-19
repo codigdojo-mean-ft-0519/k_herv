@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>Welcome to {{ title }}!</h1>
+
+  <h2>{{ second }}</h2>
+</div>
+<ul style="text-align:center">
+  <li *ngFor="let task of tasks">{{ task.title }} - {{ task.description }}</li>
+</ul>
+
+<h2 style="text-align:center">{{ third }}</h2>
+<ul style="text-align:center">
+  <li>{{ tasks[1].title }} - {{ tasks[2].description }}</li>
+</ul>

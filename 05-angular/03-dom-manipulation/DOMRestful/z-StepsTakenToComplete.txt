@@ -1,0 +1,34 @@
+Opened this folder in VS Code:  C:\1Files--create-RKH-062616\JasonF-MEAN-Stack-f\mean-assignment-landscape\05-angular\03-dom-manipulation
+
+Opened bash and entered ng new DOMRestful...files and folders created as expected.  added this steps file and an assignment.txt files
+
+Closed VS Code then re-opened as DOMRESTFUL
+
+Drug/copied .prettierrc from an older project
+
+via Windows Explorer copied from fetch-data/restfullTasksthe server folder and server.js file to this new project
+
+Ran ng build --watch from 1bash terminal...this created the dist folder...errros including can't find mongoose...shoud I run npm git, etc?  but maybe ng serve will do it
+
+Modified app.component.ts and app.component.html to match the top of the output file, but the harder part is getting the database items to show
+
+Ran ng g s http which is ng generate serve with service name http to get the files http.service.spec.ts and http.service.ts
+
+Kind of working backwards...set up things in the app.component.html so the page will display properly if the attributes were proper including an array of task objects...then in app.component.ts created a dummy array ....it displayed fine
+
+Per the DOM M/Observable tab imported OnInit at top of app.component.ts
+
+Per Fetch Data/Service imported HttpService at top of module.ts file
+
+Completed steps in FetchData/Service and received the success listed at the bottom:  tasks printed in console
+
+Moving on to DOM/Observables tab
+
+I completed all those steps circa 0200 051919 and the output should reflect the database, but it doesn't.  these lines seem to be the issue in the app.component.ts:
+      console.log('Got our tasks!', data);  ...data is the array needed by tasks
+      // this.tasks = data['/tasks'];  .....tried various things to get data assigned to tasks on right side of =
+Because when giving tasks above  tasks = [...   a dummy array of objects, it outputs on the web page fine, but in the above could not get it to working
+
+
+
+
