@@ -11,6 +11,7 @@
 # KH extras
 /bu02-mongoose-dashboard
 /bu02-mongoose-dashboard/
+*.lnk
 
 # IDEs and editors
 /.idea
