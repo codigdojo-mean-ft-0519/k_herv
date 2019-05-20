@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div *ngIf="tasks">
+  <!--//added with Wes -->
+
+  <div style="text-align:center">
+    <h1>Welcome to {{ title }}!</h1>
+
+    <h2>{{ second }}</h2>
+  </div>
+  <ul style="text-align:center">
+    <li *ngFor="let task of tasks">
+      {{ task?.title }} - {{ task?.description }}
+      <!-- //safe navigation
+      operator...[from Shannon] don't evaluate properties of task until have it -->
+    </li>
+  </ul>
+
+  <h2 style="text-align:center">{{ third }}</h2>
+  <ul style="text-align:center">
+    <li>new goes here {{ task?.title }} - {{ task?.description }}</li>
+  </ul>
+</div>
+
+//
+<!-- <li>{{ tasks[2].title }} - {{ tasks[2].description }}</li>
+wrong way to do single task -->
