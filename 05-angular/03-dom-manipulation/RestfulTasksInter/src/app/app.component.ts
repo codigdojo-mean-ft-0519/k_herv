@@ -14,6 +14,11 @@ export class AppComponent implements OnInit {
   title = 'Restful Tasks API';
   tasks: Task[]; //added with Wes...fixed red squiggles, but a lot more had to happen before that
   task: Task;
+  tasks2: Task[]; //added for restful interactive
+  taskdetail = {
+    title: 'dummy taskTitle',
+    description: 'dummytaskDescription',
+  };
 
   // tasks = [
   //   { title: 'mow', description: '20 acres' },
@@ -27,7 +32,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     const id = '5ce0e5136102776230e2c41d';
     this.getTasksFromService();
-    this.getTaskFromService(id);
+    //this.getTaskFromService(id);
   }
   getTasksFromService() {
     const observable: Observable<Task[]> = this._httpService.getTasks(); //added type of observable with Wes  //gets stuff from http.service.ts
@@ -47,6 +52,25 @@ export class AppComponent implements OnInit {
       console.log('this is the task we received', task);
       this.task = task; //ng does a change detection
     });
+  }
+  onButtonGetTasks() {
+    //in html could have just used getTasksFromService
+    const observable: Observable<Task[]> = this._httpService.getTasks();
+    observable.subscribe(tasksFromAPI => {
+      console.log('Got our tasks from button!', tasksFromAPI);
+      this.tasks2 = tasksFromAPI;
+    });
+  }
+
+  onButtonGetTaskDetails(idTask: string) {
+    console.log(`id task is ${idTask}`);
+    this._httpService.getTask(idTask).subscribe(task => {
+      console.log(`task title is ${task.title}`);
+      this.task = task;
+    });
+  }
+  onButtonGetTask(tasknum) {
+    alert(`you clicked for tasks number ${tasknum}`);
   }
 }
 // alltasks = ['first task', 'second task', 'third task'];

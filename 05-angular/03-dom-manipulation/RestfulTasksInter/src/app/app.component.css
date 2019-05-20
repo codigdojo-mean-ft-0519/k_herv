@@ -1,0 +1,10 @@
+#getTasksByClick {
+  background-color: blue;
+  color: white;
+}
+
+#getTaskDescription {
+  background-color: green;
+  color: white;
+  border-radius: 50%;
+}
