@@ -1,0 +1,44 @@
+<div class="root container">
+  <!--//added with Wes -->
+
+  <div style="text-align:center">
+    <h1>Welcome to title !</h1>
+
+    <app-task [taskToShow]="task"></app-task>
+
+    <div id="interactive">
+      <hr />
+      <p>Adding ability to allow user to call for tasks to display</p>
+      <button (click)="onButtonGetTasks()" id="getTasksByClick">
+        click here to get all tasks
+      </button>
+
+      <fieldset *ngIf="tasks">
+        <legend>
+          Requested results will show up here
+        </legend>
+        <div *ngIf="tasks">
+          <ul style="text-align:center">
+            <li *ngFor="let task of tasks2">
+              {{ task?.title }}
+
+              <!-- (click)="getTaskFromService(task._id)" -->
+              <button
+                (click)="selectTask(task)"
+                id="getTaskDescription"
+                value=""
+              >
+                SHOW
+              </button>
+              <!-- //safe navigation
+                operator...[from Shannon] don't evaluate properties of task until have it -->
+            </li>
+          </ul>
+        </div>
+      </fieldset>
+    </div>
+
+    <app-task [taskToShow]="task"></app-task>
+  </div>
+  <!--  end div interactive-->
+</div>

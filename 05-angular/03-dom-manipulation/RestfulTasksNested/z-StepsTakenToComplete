@@ -1,0 +1,11 @@
+Copied previous project folder  with new name:  RestfulTasksNested >> restfultasksnested Did global replace from old names on all files:  DOMRestful domrestful
+
+Opened two terminal windows and ran:
+ng build --watch
+nodemon server.js
+
+changed port to 8003 to help prevent conflicts
+
+opened http://localhost:8003/  confirming it still displays all tasks as before
+
+Using Postman, confirmed it still works on the files
