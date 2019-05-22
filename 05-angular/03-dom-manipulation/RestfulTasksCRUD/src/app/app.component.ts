@@ -11,23 +11,24 @@ import { Observable } from 'rxjs'; //added with Wes
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  newTask: any; // per Amy
+  //newTask: any; // per Amy
   title = 'Restful Tasks CRUD';
   tasks: Task[]; //added with Wes...fixed red squiggles, but a lot more had to happen before that
   task: Task;
-  tasks2: Task[]; //added for restful interactive
-  taskdetail = {
-    title: 'dummy taskTitle',
-    description: 'dummytaskDescription',
-  };
+  //tasks2: Task[]; //added for restful interactive
+  newTask = { title: 'dummy taskTitle', description: 'dummytaskDescription' };
+
+  // taskdetail = {
+  //   title: 'dummy taskTitle',
+  //   description: 'dummytaskDescription',
+  // };
 
   // tasks = [
   //   { title: 'mow', description: '20 acres' },
   //   { title: 'cut', description: 'all trees' },
   //   { title: 'sweep', description: 'half walk' },
   // ];
-  second = 'All the tasks:';
-  third = 'The third task:';
+
   constructor(private _httpService: HttpService) {}
   // ngOnInit will run when the component is initialized, after the constructor method
   ngOnInit() {
@@ -59,7 +60,7 @@ export class AppComponent implements OnInit {
     const observable: Observable<Task[]> = this._httpService.getTasks();
     observable.subscribe(tasksFromAPI => {
       console.log('Got our tasks from button!', tasksFromAPI);
-      this.tasks2 = tasksFromAPI;
+      this.tasks = tasksFromAPI;
     });
   }
 
@@ -74,10 +75,30 @@ export class AppComponent implements OnInit {
     alert(`you clicked for tasks number ${tasknum}`);
   }
   onSubmitNew() {
+    console.log('user clicked the create button for a new task');
     // Code to send off the form data (this.newTask) to the Service
     // ...
     // Reset this.newTask to a new, clean object.
     this.newTask = { title: '', description: '' };
+  }
+
+  onSubmitUpdate(idTask: string) {
+    this.task = {
+      _id: idTask,
+      completed: false,
+      title: 'cut',
+      description: 'all trees',
+      createdAt: 2019,
+      updatedAt: 2019,
+    };
+  }
+
+  removeTask(idTask: string) {
+    console.log('this task should be removed', idTask);
+  }
+
+  showEditForm(idTask: string) {
+    console.log('user clicked first edit button to see this task', idTask);
   }
 } // end class
 
