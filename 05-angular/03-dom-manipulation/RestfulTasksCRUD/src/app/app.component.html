@@ -1,0 +1,62 @@
+<div>
+  <!--//added with Wes -->
+
+  <div style="text-align:center">
+    <h1>Welcome to {{ title }}!</h1>
+
+    <div id="interactive">
+      <hr />
+      <fieldset>
+        <legend>
+          New Task
+        </legend>
+        <form (submit)="onSubmitNew()">
+          <p>dubcurl newTask | json dubcurl</p>
+          <label>
+            Task title:
+
+            <input
+              type="text"
+              name="newTask.title"
+              [(ngModel]="newTask.title"
+            />
+          </label>
+          <label>
+            Task description:
+            <input
+              type="text"
+              name="newTask.description"
+              [(ngModel)]="newTask.description"
+            />
+          </label>
+          <input type="submit" value="Create Task" />
+        </form>
+      </fieldset>
+
+      <fieldset *ngIf="tasks">
+        <legend>
+          Task List
+        </legend>
+        <div *ngIf="tasks">
+          <ul style="text-align:center">
+            <li *ngFor="let task of tasks">
+              {{ task?.title }}
+              <button
+                (click)="getTaskFromService(task._id)"
+                id="getTaskDescription"
+                value="5ce0e5136102776230e2c41d"
+              >
+                SHOW
+              </button>
+              <!-- //safe navigation
+            operator...[from Shannon] don't evaluate properties of task until have it -->
+            </li>
+          </ul>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- <li>{{ tasks[2].title }} - {{ tasks[2].description }}</li>
+wrong way to do single task -->
+  </div>
+</div>

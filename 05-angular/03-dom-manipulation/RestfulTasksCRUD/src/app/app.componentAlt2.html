@@ -1,0 +1,49 @@
+<div>
+  <!--//added with Wes -->
+
+  <div style="text-align:center">
+    <h1>Welcome to {{ title }}!</h1>
+
+    <div id="interactive">
+      <hr />
+      <p>Adding ability to allow user to call for tasks to display</p>
+      <button (click)="onButtonGetTasks()" id="getTasksByClick">
+        click here to get all tasks
+      </button>
+
+      <p>for now, this just sends back a 5</p>
+      <button (click)="onButtonGetTask(5)" id="getTasksByClick">
+        click here to get task 5
+      </button>
+
+      <fieldset *ngIf="tasks">
+        <legend>
+          Requested results will show up here
+        </legend>
+        <div *ngIf="tasks">
+          <ul style="text-align:center">
+            <li *ngFor="let task of tasks">
+              {{ task?.title }}
+              <button
+                (click)="getTaskFromService(task._id)"
+                id="getTaskDescription"
+                value="5ce0e5136102776230e2c41d"
+              >
+                SHOW
+              </button>
+              <!-- //safe navigation
+            operator...[from Shannon] don't evaluate properties of task until have it -->
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p>{{ task?.title }}</p>
+          <p>{{ task?.description }}</p>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- <li>{{ tasks[2].title }} - {{ tasks[2].description }}</li>
+wrong way to do single task -->
+  </div>
+</div>

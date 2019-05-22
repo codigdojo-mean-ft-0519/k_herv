@@ -57,6 +57,8 @@ console.log(
     return x + memo;
   })
 );
+
+console.log('before find');
 console.log(
   _.find(array, function callback(x) {
     return x === 15;
