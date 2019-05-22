@@ -1,11 +1,24 @@
-Copied previous project folder  with new name:  RestfulTasksInter >> restfultasksinter Did global replace from old names on all files:  DOMRestful domrestful
+Copied previous project folder  with new name:  RestfulTasksCRUD  Did global replace from old names on all files:
+RestfulTasksCRUD
+
+restfultaskscrud
+
+RestfulTasksInter
+
+restfultasksinter
 
 Opened two terminal windows and ran:
 ng build --watch
 nodemon server.js
 
-changed port to 8003 to help prevent conflicts
+changed port to 8005 to help prevent conflicts
 
-opened http://localhost:8003/  confirming it still displays all tasks as before
+opened http://localhost:8005/  confirming it still displays all tasks as before
 
-Using Postman, confirmed it still works on the files
+Made changes to html in accordance with platform including ngMOdel and created New Task form  had former display of all tasks with button on click load on refresh
+
+ended 5/21/19 with below ngModel; solved early 5/22/19
+Can't bind to '(ngModel' since it isn't a known property of 'input'. ("....>>>problem was lacking closing round bracket
+
+---
+errror because newTask is undefined....[(ngModel)]="newTask.title" />

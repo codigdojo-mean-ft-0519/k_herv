@@ -2,6 +2,7 @@
   <!--//added with Wes -->
 
   <div style="text-align:center">
+    k
     <h1>Welcome to {{ title }}!</h1>
 
     <div id="interactive">
@@ -11,6 +12,7 @@
           New Task
         </legend>
         <form (submit)="onSubmitNew($event, taskForm)" #taskForm="ngForm" autocomplete="off">
+          <!-- taskForm matches in both places on this line -->
           <p>{{ newTask | json }}</p>
           <label>
             Task title:
@@ -34,7 +36,8 @@
           <fieldset *ngFor="let task of tasks">
             <p>{{ task?.title }}</p>
             <p>{{ task?.description }}</p>
-            <button (click)="showEditForm(task._id)" id="" value="">
+            <button (click)="showEditForm(task)" id="" value="">
+              <!-- this should show the edit form -->
               Edit
             </button>
             <button (click)="removeTask(task._id)" id="" value="">
@@ -42,20 +45,6 @@
             </button>
             <!-- Begin edit form             -->
             <!-- <form (submit)="onSubmitUpdate($event, taskForm)" #taskForm="ngForm" autocomplete="off"> -->
-            <form autocomplete="off">
-              <p>{{ task | json }}</p>
-              <p>Edit a task</p>
-              <label>
-                Task title:
-
-                <input type="text" name="task.title" [(ngModel)]="task.title" />
-              </label>
-              <label>
-                Task description:
-                <input type="text" name="task.description" [(ngModel)]="task.description" />
-              </label>
-              <input type="submit" value="Edit" />
-            </form>
 
             <!-- //safe navigation
               operator...[from Shannon] don't evaluate properties of task until have it -->
@@ -63,7 +52,23 @@
         </div>
       </fieldset>
     </div>
+    <!--Below edit task form will show up if user has clicked first edit button -->
+    <div *ngIf="selectedTask">
+      <form (submit)="onSubmitUpdate($event, editForm)" #editForm="ngForm" autocomplete="off">
+        <p>{{ selectedTask | json }}</p>
+        <p>Edit a task</p>
+        <label>
+          Task title:
 
+          <input type="text" name="title" [(ngModel)]="selectedTask.title" />
+        </label>
+        <label>
+          Task description:
+          <input type="text" name="description" [(ngModel)]="selectedTask.description" />
+        </label>
+        <input type="submit" value="Update" />
+      </form>
+    </div>
     <!-- <li>{{ tasks[2].title }} - {{ tasks[2].description }}</li>
 wrong way to do single task -->
   </div>

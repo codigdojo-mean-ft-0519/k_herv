@@ -7,9 +7,7 @@ import { Observable } from 'rxjs'; //added with Wes
   providedIn: 'root',
 })
 export class HttpService {
-  constructor(private _http: HttpClient) {
-    this.getTasks(); //will get red squiggle unless the thing after dot is in
-  }
+  constructor(private _http: HttpClient) {}
 
   getTasks(): Observable<Task[]> {
     //added Task type with Wes
@@ -23,6 +21,23 @@ export class HttpService {
   // make method to get one task
   getTask(id: string): Observable<Task> {
     return this._http.get<Task>(`/tasks/${id}`); //getting from API aka database
+  }
+
+  // create
+  createTask(task: Task): Observable<Task> {
+    return this._http.post<Task>(`/tasks`, task);
+  }
+
+  //update
+  updateTask(task: Task): Observable<Task> {
+    console.log('in updateTask, id:  ', task._id);
+    return this._http.put<Task>(`/tasks/${task._id}`, task);
+  }
+
+  //destroy
+  destroyTask(taskid: string): Observable<Task> {
+    console.log('in destroy in service for id', taskid);
+    return this._http.delete<Task>(`/tasks/${taskid}`);
   }
 } // end of class
 

@@ -23,6 +23,7 @@ module.exports = function(app) {
 
     //PUT: Update a Task by ID
     .put('/tasks/:_id', function(request, response) {
+      console.log('made it to routes file');
       ResttaskController.update(request, response);
     });
 

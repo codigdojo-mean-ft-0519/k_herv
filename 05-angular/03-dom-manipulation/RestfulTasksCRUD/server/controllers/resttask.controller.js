@@ -31,7 +31,7 @@ module.exports = {
 
   //PUT: Update a Task by ID
   update(request, response) {
-    console.log('request stuff', request.params, request.body);
+    console.log('updated stuff in contoller.js file', request.params, request.body);
     Resttask.findByIdAndUpdate(request.params._id, request.body, { new: true })
       .then(task => response.json(task))
       .catch(error => response.json(error));
@@ -39,7 +39,7 @@ module.exports = {
 
   //DELETE: Delete a Task by ID
   destroy(request, response) {
-    Resttask.remove(request.params)
+    Resttask.findByIdAndRemove(request.params._id)
       .then(result => response.json(result))
       .catch(error => response.json(error));
   },
