@@ -12,4 +12,8 @@ app.use(
 );
 app.use(parser.json());
 app.use(express.static(path.join(__dirname, 'dist/RateMyCakes')));
+
+require('./server/config/database');
+require('./server/config/routes')(app);
+
 app.listen(port, () => console.log(`express server listening on port ${port}`));
