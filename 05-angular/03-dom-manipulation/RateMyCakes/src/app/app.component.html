@@ -1,0 +1,64 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <h1>{{ title }}!</h1>
+  <div class="col">
+    <div class="form-group">
+      <form autocomplete="off">
+        <label>Submit a cake to be rated</label>
+        <hr />
+        <label for="fname">Baker Name</label>
+        <input type="text" name="bakername" placeholder="Charlie Brown" />
+
+        <label for="lname">Image url (no nudes please...)</label>
+        <input type="text" name="imageurl" />
+        <input class="btn" type="submit" value="Submit" />
+      </form>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="row">
+      <div class="col-50 img-block">
+        <img src="https://i.ytimg.com/vi/ZBkQtHzInCo/maxresdefault.jpg" />
+      </div>
+      <div class="col-50">
+        <form>
+          <select name="numStars">
+            <option value="5stars">5 stars</option>
+            <option value="4stars">4 stars</option>
+            <option value="3stars">3 stars</option>
+            <option value="2stars">2 stars</option>
+            <option value="1star">1 star</option>
+            <option value="0stars">0 stars</option>
+          </select>
+          <textarea>Type your comment here!</textarea>
+          <input type="submit" value="Rate!" />
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-50">
+        <img
+          src="http://www.ricenflour.com/wp-content/uploads/2015/11/fruit-roll-cake.jpg"
+        />
+      </div>
+      <div class="col-50">
+        <form>
+          <select name="numStars">
+            <option value="5stars">5 stars</option>
+            <option value="4stars">4 stars</option>
+            <option value="3stars">3 stars</option>
+            <option value="2stars">2 stars</option>
+            <option value="1star">1 star</option>
+            <option value="0stars">0 stars</option>
+          </select>
+          <textarea>Type your comment here!</textarea>
+          <input type="submit" value="Rate!" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <app-cake-detail></app-cake-detail>
+</div>
