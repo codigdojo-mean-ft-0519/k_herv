@@ -5,7 +5,7 @@
       <img src="{{ cakeToShow.imageUrl }}" />
     </div>
     <div class="col-50 comment-side">
-      <p>Average rating: {{ cakeToShow.ratings[0].rating }}</p>
+      <p>Average rating: {{ avg }}</p>
       <div *ngFor="let rating of cakeToShow.ratings">
         <div class="comment-block">
           <p><span>"</span>{{ rating.comment }}<span>"</span></p>

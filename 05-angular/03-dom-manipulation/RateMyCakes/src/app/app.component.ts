@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
 
   onReviewCake(event: Event, form: NgForm, cake: string) {
     event.preventDefault();
-    console.log(form.value);
+    console.log('form value is:  ', form.value);
     this.ratingService
       .addRating({ ...form.value, cake })
       .subscribe(newRating => {
