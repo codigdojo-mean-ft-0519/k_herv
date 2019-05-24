@@ -1,21 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div route-component>
-  <div style="text-align:center">
-    <h1>Dojo Weather Forecast</h1>
-  </div>
-
+  <h1>Dojo Weather Forecast</h1>
   <ul>
-    <li><a href="#">Seattle WA</a></li>
-    <li><a href="#">San Jose CA</a></li>
-    <li><a href="#">Burbank CA</a></li>
-    <li><a href="#">Dallas TX</a></li>
-    <li><a href="#">Washington DC</a></li>
-    <li><a href="#">Chicago IL</a></li>
+    <li><a [routerLink]="['/seattle']">Seattle WA</a></li>
+    <li><a [routerLink]="['/sanjose']">San Jose CA</a></li>
+    <li><a [routerLink]="['/burbank']">Burbank CA</a></li>
+    <li><a [routerLink]="['/dallas']">Dallas TX</a></li>
+    <li><a [routerLink]="['/washingtondc']">Washington DC</a></li>
+    <li><a [routerLink]="['/chicago']">Chicago IL</a></li>
   </ul>
 
-  <app-burbank></app-burbank>
-
-  <button [routerLink]="['/burbank']">Load Burbank</button>
-  <button [routerLink]="['/chicago']">Load Chicago</button>
   <router-outlet></router-outlet>
 </div>
