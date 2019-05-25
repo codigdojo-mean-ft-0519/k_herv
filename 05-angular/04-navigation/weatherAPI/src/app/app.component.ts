@@ -6,10 +6,10 @@ import { WeatherService } from './weather.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   //
   title = 'weatherAPI';
-  weathers = 999;
+  //weathers = 999;
   constructor(private weatherService: WeatherService) {}
 
   // ngOnInit(): void {

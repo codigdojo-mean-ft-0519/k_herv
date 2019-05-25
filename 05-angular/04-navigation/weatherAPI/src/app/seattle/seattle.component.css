@@ -1,0 +1,11 @@
+.comp-container {
+  border: 1px solid black;
+  /* background-color: #dddddd */
+}
+
+ul,
+img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 25%;
+}

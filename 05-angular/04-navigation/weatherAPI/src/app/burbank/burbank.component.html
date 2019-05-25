@@ -2,13 +2,13 @@
   <h3>Burbank, CA</h3>
   <div class="DataAndPict">
     <ul>
-      <li>Humidity: main.humidity</li>
-      <li>Temperature (Average): calculated</li>
-      <li>Temperature (High): main.temp_max</li>
-      <li>Temperature (Low): main.temp_min</li>
-      <li>Status: weather[0].description</li>
+      <li>Humidity: {{ weathers?.main.humidity }}</li>
+      <li>Temperature (Average): {{ averageTemp }}</li>
+      <li>Temperature (High): {{ weather?.main.temp_max }}</li>
+      <li>Temperature (Low): {{ weathers?.main.temp_min }}</li>
+      <li>Status: {{ (weathers?.weather)[0].description }}</li>
     </ul>
-    <img src="/assets/images/burbank.jpg" />
+    <img src="../assets/images/burbank.jpg" />
 
     <p></p>
   </div>

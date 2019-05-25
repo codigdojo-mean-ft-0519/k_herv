@@ -1,3 +1,15 @@
-<p>
-  dallas works!
-</p>
+<div class="comp-container">
+  <h3>Dallas, TX</h3>
+  <div class="DataAndPict">
+    <ul>
+      <li>Humidity: {{ weathers?.main.humidity }}</li>
+      <li>Temperature (Average): {{ averageTemp }}</li>
+      <li>Temperature (High): {{ weather?.main.temp_max }}</li>
+      <li>Temperature (Low): {{ weathers?.main.temp_min }}</li>
+      <li>Status: {{ (weathers?.weather)[0].description }}</li>
+    </ul>
+    <img src="/assets/images/dallas.jpg" />
+
+    <p></p>
+  </div>
+</div>
