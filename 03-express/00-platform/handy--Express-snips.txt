@@ -17,7 +17,7 @@ npm install session
 
 npm install express-session
 
-npm install axios
+npm install axiosnpm 
 
 npm install mongoose
 
@@ -26,7 +26,7 @@ Hi it's me
 ---don't forget to rebase (git pull before any commits)...commit locally, then rebase, then push
 
 from the mongoose section of platfrom:
-Use express flash - npm install --save express-flash - to display your errors. In order to use express flash messages, you must have session.
+Use express flash - npm install express-flash - to display your errors. In order to use express flash messages, you must have session.
 
 -----
 users in and users out:

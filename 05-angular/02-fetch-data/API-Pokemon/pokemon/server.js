@@ -4,7 +4,7 @@ const path = require('path');
 
 const app = express();
 const {
-  env: { PORT: port = 8000 },
+  env: { PORT: port = 8001 },
 } = process;
 
 app.use(parser.urlencoded({ extended: true }));

@@ -1,6 +1,6 @@
 
 
-// Finish the five methods attached to the _ object to create your own custom library.  The purpose of this assignment is to show how a simple JavaScript library can be made. 
+// Finish the five methods attached to the _ object to create your own custom library.  The purpose of this assignment is to show how a simple JavaScript library can be made.
 
 // Consider the below example:
 
@@ -11,29 +11,57 @@
 //     callback(arr[i]); // invoking the callback many times... delegation!
 //   }
 // }
-// Your mission is to build your own version of the underscore library. Try to get as close as you can to what underscore provides for each example below. 
+// Your mission is to build your own version of the underscore library. Try to get as close as you can to what underscore provides for each example below.
 
 // To create your own custom JavaScript library, you will just add methods to a JS object! (Later on when we teach you about immediate functions you’ll see how to make this more robust to build libraries like jQuery!).
 
 // Let’s build a few methods of underscore!
 
-// var _ = {
-//    map: function() {
-//      //code here;
-//    },
-//    reduce: function() { 
-//      // code here;
-//    },
-//    find: function() {   
-//      // code here;
-//    },
-//    filter: function() { 
-//      // code here;
-//    },
-//    reject: function() { 
-//      // code here;
-//    }
-//  }
+var _ = {
+  map: function(array, callback) {
+    for (let i = 0; i < array.length; i++) {
+      array[i] = callback(array[i]);
+    }
+  },
+  reduce: function(array, callback, memo) {
+    let el = 0;
+    if (!memo) {
+      memo = array[0];
+      el = 1;
+    }
+    for (let i = el; i < array.length; i++) {
+      memo = callback(array[i], memo);
+    }
+    return memo;
+  },
+  find: function(array, callback) {
+    for (let i = 0; i < array.length; i++) {
+      if (callback(array[i])) {
+        return array[i];
+      }
+    }
+  },
+  filter: function(array, callback) {
+    const tempArray = [];
+    for (let i = 0; i < array.length; i++) {
+      if (callback(array[i])) {
+        tempArray.push(array[i]);
+      }
+    }
+    // we could also modify the original array
+    return tempArray;
+  },
+  reject: function(array, callback) {
+    const tempArray = [];
+    for (let i = 0; i < array.length; i++) {
+      if (!callback(array[i])) {
+        tempArray.push(array[i]);
+      }
+    }
+    // we could also modify the original array
+    return tempArray;
+  },
+ }
 // // you just created a library with 5 methods!
 // var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 // console.log(evens); // if things are working right, this will return [2,4,6].
@@ -64,7 +92,7 @@ filter: filter_.filter(list, predicate, [context])
 
 function _.filter(list, function){
     console.log("nothing");
-} //Alias: select 
+} //Alias: select
 //Looks through each value in the list, returning an array of all the values that pass a truth test (predicate). predicate is transformed through iteratee to facilitate shorthand syntaxes.
 
 var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });

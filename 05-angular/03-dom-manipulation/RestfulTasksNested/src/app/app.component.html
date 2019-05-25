@@ -4,7 +4,7 @@
   <div style="text-align:center">
     <h1>Welcome to title !</h1>
 
-    <app-task [taskToShow]="task"></app-task>
+    <app-task *ngIf="tasks" [taskToShow]="task"></app-task>
 
     <div id="interactive">
       <hr />
@@ -38,7 +38,7 @@
       </fieldset>
     </div>
 
-    <app-task [taskToShow]="task"></app-task>
+    <app-task *ngIf="task" [taskToShow]="task"></app-task>
   </div>
   <!--  end div interactive-->
 </div>
