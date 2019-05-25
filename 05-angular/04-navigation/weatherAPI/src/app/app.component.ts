@@ -7,13 +7,14 @@ import { WeatherService } from './weather.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  //
   title = 'weatherAPI';
-  //weathers = 999;
+  weathers = 999;
   constructor(private weatherService: WeatherService) {}
 
-  ngOnInit(): void {
-    // this.weatherService.getWeather().subscribe(weather => {
-    //   console.log(weather.name);
-    // });
-  }
+  // ngOnInit(): void {
+  //   this.weatherService.getWeather('Dallas').subscribe(weather => {
+  //     console.log(weather);
+  //   });
+  // }
 } // End class

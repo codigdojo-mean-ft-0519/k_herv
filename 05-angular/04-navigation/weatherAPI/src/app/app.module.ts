@@ -9,6 +9,7 @@ import { BurbankComponent } from './burbank/burbank.component';
 import { DallasComponent } from './dallas/dallas.component';
 import { WashingtonDCComponent } from './washingtondc/washingtondc.component';
 import { ChicagoComponent } from './chicago/chicago.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ChicagoComponent } from './chicago/chicago.component';
     WashingtonDCComponent,
     ChicagoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
