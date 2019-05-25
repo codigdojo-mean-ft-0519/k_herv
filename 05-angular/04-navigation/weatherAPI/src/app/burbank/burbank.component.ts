@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-burbank',
   templateUrl: './burbank.component.html',
-  styleUrls: ['./burbank.component.css']
+  styleUrls: ['./burbank.component.css'],
 })
 export class BurbankComponent implements OnInit {
+  //@Input() weatherToShow: any;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
