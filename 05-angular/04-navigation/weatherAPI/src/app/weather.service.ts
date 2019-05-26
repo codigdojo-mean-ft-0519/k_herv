@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WeatherService implements OnInit {
   //
-  title = 'pokemon';
+
   constructor(private _http: HttpClient) {}
 
   // https://api.openweathermap.org/data/2.5/weather?q=seattle&units=imperial&appid=a85a5c44d911e1ab4866a79badddf21e
