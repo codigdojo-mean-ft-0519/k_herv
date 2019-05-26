@@ -13,6 +13,7 @@
 /bu02-mongoose-dashboard/
 *.lnk
 *trashme*
+*.docx
 
 # IDEs and editors
 /.idea

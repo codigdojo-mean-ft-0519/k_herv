@@ -1,3 +1,7 @@
-<p>
-  location-list works!
-</p>
+<div class="container">
+  <div *ngFor="let location of locations" class="location">
+    <h2>{{ location.name }}</h2>
+    <p>(gives {{ location.minGold }}-{{ location.maxGold }} golds)</p>
+    <button (click)="onClick(location)">Find Gold!</button>
+  </div>
+</div>

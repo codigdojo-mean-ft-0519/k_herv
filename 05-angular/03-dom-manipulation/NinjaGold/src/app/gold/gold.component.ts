@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-gold',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gold.component.css'],
 })
 export class GoldComponent implements OnInit {
-  gold: number;
-  constructor() {}
+  user: User;
+  constructor(private userService: UserService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = this.userService.getUser();
+  }
 }

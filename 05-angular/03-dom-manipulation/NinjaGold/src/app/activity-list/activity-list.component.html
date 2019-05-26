@@ -1,3 +1,13 @@
-<p>
-  activity-list works!
-</p>
+<div class="container">
+  <p>Activities:</p>
+  <div class="activities">
+    <p
+      *ngFor="let activity of activities"
+      [class.green]="activity.gold >= 0"
+      [class.red]="activity.gold < 0"
+    >
+      {{ activity.gold >= 0 ? 'won' : 'lost' }} {{ activity.gold }} golds at the
+      {{ activity.location }} at {{ activity.createdAt | date }}
+    </p>
+  </div>
+</div>
