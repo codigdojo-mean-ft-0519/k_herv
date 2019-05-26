@@ -1,3 +1,3 @@
-export class Weather {
-  main: any;
-}
+// export class Weather {
+//   main: any;
+// }
